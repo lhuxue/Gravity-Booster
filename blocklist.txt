@@ -7,7 +7,7 @@
 # 版本号：0.2
 
 # 清洗日期: 2026-08-21
-# 规则数: 5000+条
+# 规则数: 4949条
 # 说明: “SM-Ad-FuckU-hosts”订阅原作者的“https://raw.githubusercontent.com/2Gardon/SM-Ad-FuckU-hosts/refs/heads/master/SMAdHosts”订阅针对安卓APP的广告过滤效果极佳，但订阅包含FCM推送和Github加速(IP映射),直接添加到Pi-hole会被当成拦截域名误杀，本订阅对此进行重新整理以方便个人使用。当然，如有需求也欢迎订阅,随缘更新,必要时逐步添加其他经测试有效的规则。
 # 致谢/参考来源（见下）：
 # https://github.com/2Gardon/SM-Ad-FuckU-hosts
