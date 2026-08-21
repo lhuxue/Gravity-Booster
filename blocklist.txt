@@ -2,9 +2,9 @@
 # 灵狐雪自定义订阅
 # 适用于 Pi-hole Adlist —— Blacklist
 # Github: https://github.com/lhuxue/Gravity-Booster/
-# 订阅: https://raw.githubusercontent.com/lhuxue/Gravity-Booster/blocklist.txt
+# 订阅: https://raw.githubusercontent.com/lhuxue/Gravity-Booster/main/blocklist.txt
 
-# 版本号：0.1
+# 版本号：0.2
 
 # 清洗日期: 2026-08-21
 # 规则数: 5000+条
