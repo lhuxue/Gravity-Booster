@@ -1,0 +1,5319 @@
+# ============================================
+# 灵狐雪自定义订阅
+# 适用于 Pi-hole Adlist —— Blacklist
+# Github: https://github.com/lhuxue/Gravity-Booster/
+# 订阅: https://raw.githubusercontent.com/lhuxue/Gravity-Booster/blocklist.txt
+
+# 版本号：0.1
+
+# 清洗日期: 2026-08-21
+# 规则数: 5000+条
+# 说明: “SM-Ad-FuckU-hosts”订阅原作者的“https://raw.githubusercontent.com/2Gardon/SM-Ad-FuckU-hosts/refs/heads/master/SMAdHosts”订阅针对安卓APP的广告过滤效果极佳，但订阅包含FCM推送和Github加速(IP映射),直接添加到Pi-hole会被当成拦截域名误杀，本订阅对此进行重新整理以方便个人使用。当然，如有需求也欢迎订阅,随缘更新,必要时逐步添加其他经测试有效的规则。
+# 致谢/参考来源（见下）：
+# https://github.com/2Gardon/SM-Ad-FuckU-hosts
+# ============================================
+
+
+
+# 社•交•类
+# QQ
+iv6.gtimg.cn  # 个性字体（副作用未知）
+gxh.material.qq.com  # 气泡、头像挂件，误伤夜间模式不能下载
+# 0.0.0.0 downv6.qq.com  QQ下载安装包，但导致一些网页下载不了东西
+# 0.0.0.0 qzonestyle.gtimg.cn QQ空间装扮
+world.qpic.cn  # 小世界的图片，视频的封面图。
+tianshu.gtimg.cn  # 顶部横幅广告图片，误杀签到打卡后的图片
+minigame.gtimg.cn  # QQ微信小游戏图标
+# 微信公众号(只禁③广告位还在只是不显示广告图片&视频)
+wxa.wxs.qq.com
+wxsnsdy.wxs.qq.com
+wxsnsdythumb.wxs.qq.com
+ad.wx.com
+bc.weixin.qq.com
+channels.weixin.qq.com
+badjs.weixinbridge.com
+wximg.wxs.qq.com  # 微信小程序开屏和其他广告图片，然而照样会空白屏显示3~5秒，弹窗广告照弹(只是无图)，广告位照样占(只是无图)。误杀暂未发现，看域名应该会有一些。
+wxsmw.wxs.qq.com  # 微信小程序底下的视频广告，广告位还在，只是能省点流量，不会被视频打扰。误杀未知。
+dns.weixin.qq.com
+dns.weixin.qq.com.cn
+aedns.weixin.qq.com
+dnstest.weixin.qq.com
+# 微博（前3顺手抓的未知，资讯流广告和正文一起的一损俱损，④开屏，⑥14.7后新增的视频开屏广告，⑤xml配置了很多加载广告，副作用未知）
+adimg.uve.weibo.com
+admimage.biz.weibo.com
+kadmimage.biz.weibo.com
+sdkapp.mobile.sina.cn
+down.apps.sina.cn
+bootpreload.uve.weibo.com
+bootrealtime.uve.weibo.com
+wbapp.uve.weibo.com
+sdkapp.uve.weibo.com
+datacollection.uve.weibo.com  # 开屏？
+fastimage.uve.weibo.com  # 开屏?
+uve.weibo.com
+ad.weibo.com
+# 0.0.0.0 api.weibo.cn
+# 0.0.0.0 mapi.weibo.cn
+adsmind.ugdtimg.com
+adstrategy.biz.weibo.com
+# Soul（①②是开屏，后面是别的APP引用）
+ad-r.soulapp.cn
+soul-ad.soulapp.cn
+# 0.0.0.0 base-growth.soulapp.cn
+# 0.0.0.0 data-collector.soulapp.cn
+# 0.0.0.0 data-connector-server.soulapp.cn
+# 0.0.0.0 increase-openapi.soulapp.cn
+# 0.0.0.0 insight.soulapp.cn
+# 0.0.0.0 gateway-mobile-gray.soulapp.cn
+# 0.0.0.0 gateway2-tcp-spam.soulapp.cn
+# 0.0.0.0 media-service.soulapp.cn
+# 0.0.0.0 media-service-source.soulapp.cn
+# blued个人界面广告，主页推荐直播
+social.blued.cn
+# 探探(①②追踪)
+client-tracking.tantanapp.com
+client-tracking.tantanapp.com.ctc
+httpdns.tantanapp.com
+# 阅读•小说类
+# 七猫小说
+api.jietuhb.com  # 摇一摇广告
+pgdt.ugdtimg.com  # 图片开屏广告
+cdn-ad.wtzw.com
+cdn-new-ad.wtzw.com
+update.wtzw.com  # 更新？
+xiaoshuo.wtzw.com  # 正文领红包广告图和底栏的福利中心没网
+a6-remad.qm989.com  # 底部横幅？
+# 0.0.0.0 mkt.wtzw.com  备用开屏
+qm-ab.wtzw.com  # 开屏，这两条都能干掉空白的摇一摇界面。
+ad-drs.52qumao.com
+ad-drs-ipv6.52qumao.com
+api-adx.52qumao.com  # v7.73(可能更早)发现新增广告，新开屏广告见优比客思
+api-cfg.52qumao.com
+t-remad.qm989.com
+# 起点开屏广告(①)，误伤精选_漫画_小编精选和周冠军的封面图，影响超小。
+bossaudioandcomic-1252317822.image.myqcloud.com
+# 0.0.0.0 magev6.if.qidian.com 备用开屏
+a.game.qidian.com
+abc.if.qidian.com
+cj.qidian.com
+dwtrack.qidian.com
+o.if.qidian.com
+tongji.qidian.com
+uedas.qidian.com
+uedas.qdmm.com
+s1.cmfu.com
+# 掌阅
+ad.zhangyue.com
+img.ad.zhangyue.com
+m.ad.zhangyue.com
+saad.ms.zhangyue.net
+smad.ms.zhangyue.net
+# 晋江小说阅读(副作用未知)
+android.jjwxc.com
+# QQ阅读（①免费带广告阅读模式广告）
+ii.gdt.qq.com
+16dd-advertise-1252317822.file.myqcloud.com
+16dd-advertise-1252317822.image.myqcloud.com
+# 0.0.0.0 commontgw.reader.qq.com  开屏闪屏和“立即参与”按钮，禁用后主页感觉有点怪怪的
+# 腾讯漫画(①开屏②活动福利弹窗、萌新顶栏)
+manhua.acimg.cn
+snowflake.qq.com
+# 快看漫画(开屏没去掉，一天只展示一次)
+ad.v3mh.com
+ads.v3mh.com
+# 懒人听书 开屏&播放页
+display.wting.info
+update.duokan.com  # 全民小说、多看阅读更新？
+# 得间免费小说（①是开屏5秒空白摇一摇广告界面，可替换活动加速。②是阅读界面底部横幅广告，本地自带的横幅去不掉，起码不会误触跳转其他APP）
+api.qttunion.com  # 趣盟广告
+static.mddlsa.com
+# 新闻•资讯类
+# 腾讯新闻（①开屏和视频广告的封面图,②也能禁开屏广告但副作用未知）
+pgdt.gtimg.cn  # QQ音乐开屏
+news.ssp.qq.com
+newsad.ssp.qq.com
+# 新浪新闻(①开屏②③未知)
+sax.sina.com.cn
+saxn.sina.com.cn
+s3adm.ad.weibo.com
+lupic.cdn.bcebos.com  # 新浪新闻首页资讯流广告图片
+apicloud.zol.com.cn  # 中关村开屏
+ca.zol.com.cn  # 中关村手机网页主页信息流广告
+# 58同城
+adshow.58.com
+brandshow.58.com
+jing.58.com
+ptracker.58.com
+static.track.58.com
+track.58.com
+tracklog.58.com
+usdtop.58.com
+img.xgo.com.cn
+stat.58.xgo.com.cn
+stat.xgo.com.cn
+analytics.ganji.com
+# 鳳凰網
+c1.ifengimg.com
+dol.deliver.ifeng.com
+dolphin.deliver.ifeng.com
+games.ifeng.com
+iis1.deliver.ifeng.com
+mfp.deliver.ifeng.com
+stadig.ifeng.com
+api.newad.ifeng.com  # 信息流广告图
+bdmap1.ifeng.com  # 网页信息流广告位+文字，显示的一片空白布局去不掉
+survey.news.ifeng.com  # 网页底部横幅轮播新闻+“打开”按钮
+# 搜狐新闻(含开屏)
+m.ads.sohu.com
+r.ads.sohu.com
+s.ads.sohu.com
+sc.ads.sohu.com
+t.ads.sohu.com
+adpai.thepaper.cn  # 澎湃新闻开屏
+file.36krcdn.com  # 36氪开屏
+cdn.cmgadx.com  # 央视体育开屏
+api-ad-product.huxiu.com  # 虎嗅
+adstatic.peopleapp.com  # 人民日报
+ads.zaobao.com  # (新加坡)联合早报
+# 社•区•类
+# 豆瓣(①②开屏广告，然而照样被空白屏拖时间)
+erebor.douban.com
+frodo.douban.com
+static-s.iqiyi.com  # 主页视频广告预览图
+data.video.iqiyi.com  # 主页视频广告视频
+dmp-data.vip.com
+api.douban.com  # 日历推荐式开屏？
+artery.douban.com
+# 小红书
+ads-img-al.xhscdn.com
+ads-video-al.xhscdn.com
+ads-video-qc.xhscdn.com
+spider-tracker.xiaohongshu.com
+splash-online-decision.xiaohongshu.com
+ads-img-bak.xhscdn.com
+# 虎扑
+adx.hupu.com
+goblin.hupu.com
+shence.hupu.com
+ccdace.hupu.com
+hd.hupu.com
+# 米游社(开屏，误伤首页顶部等部分图标，联网运行一次后再删splash文件夹即可)
+bbs-static.miyoushe.com
+ad-log-upload.mihoyo.com
+# NGA玩家社区
+adlog.tagtic.cn
+adopt-sdk.xg.tagtic.cn
+adn.tapapis.cn
+commercial.iem.taptap.cn
+tapad.iem.taptap.cn
+tapad-platform.oss-cn-beijing.aliyuncs.com
+# 懂球帝开屏和首页信息流广告
+ap.dongqiudi.com
+gw.csdn.net  # CSDN开屏
+# Lofter ①②开屏 ③更新但误杀未测
+ad.lofter.com
+ad.mh.163.com
+yaolu.mh.163.com
+# 财经•投资•理财•股市类
+# 东方财富开屏、抬头、banner
+emdcadvertise.eastmoney.com
+emdcadvertise-global.eastmoney.com
+2012.8684.com
+adfile.caixin.com
+apollo.caixin.com
+logstat.caixin.com
+promote.caixin.com
+showimg.caixin.com  # 财新开屏
+ad.thsi.cn  # 同花顺
+stat.10jqka.com.cn  # 同花顺
+adm.10jqka.com.cn  # 开屏
+ad.yicai.com  # 第一财经
+amsapp.yicai.com  # 开屏
+ssp.dzh.com.cn  # 大智慧开屏
+# 招商银行开屏
+webappcfg.paas.cmbchina.com
+# （中信）动卡空间开屏
+ump.sz.creditcard.ecitic.com
+# 浦发银行 开屏和营销活动
+lban.spdb.com.cn
+ad.ysepay.com  # 银盛通
+# 0.0.0.0 antifraud.cup.com.cn 银联反诈
+intellicc.bcs.cmbchina.com  # (招行)掌上生活弹窗广告，开屏去不掉，误杀大量图片
+# 买买买•购物类
+# 当当开屏（部分横幅、图标、商品封面无图）
+img62.ddimg.cn
+# 疑似京东金融开屏广告，副作用未测试
+kjstorage.360buyimg.com
+support.you.163.com  # 网易严选
+mpcs.suning.com  # 苏宁易购
+adls.suning.com  # 苏宁未知
+flowplus.meituan.net  # 美团开屏
+httpdns.meituan.com
+# 什么值得买(①开屏，②不知道)
+app-api.smzdm.com
+bc-ad-vod.zdmimg.com
+# 拼多多广告
+images.pinduoduo.com
+t-dsp.pinduoduo.com
+adim.pinduoduo.com
+dspsdk.pinduoduo.com
+lp.pinduoduo.com
+# 饿了么
+elemecdn.com
+fuss10.elemecdn.com
+www1.elecfans.com
+nr-op.elemecdn.com
+app-monitor.ele.me
+ads.95516.com  # 云闪付
+# 0.0.0.0 ads.cup.com.cn  云闪付，误杀本地优惠活动
+ad.maoyan.com  # 猫眼(购票)
+# 行•交通类
+# 交管12123（开屏，误杀电子驾驶证）
+# 0.0.0.0 static.122.gov.cn
+# 百度地图（①开屏②开屏配置文件否则强行显示多几秒⑤首页底部推荐）
+a1.alibabausercontent.com
+afd.baidu.com
+afdconf.baidu.com
+httpdns.baidubce.com
+ugc.map.baidu.com
+map-mobile-opnimg.cdn.bcebos.com  # 主界面左上角贴图，会误伤公交&我的 的部分图标以及其他角落的营销图。
+# 0.0.0.0 pms-cdn.bdstatic.com  百度地图底栏_出行上滑出现的推荐的内容和点搜索框进去后的广告。
+aiad-aisuda.cdn.bcebos.com
+# 高德地图(①开屏②③横幅和通知中心？№④№ 测试⑤play版15.0返场开屏广告⑥⑦№)
+optimus-ads.amap.com
+store.is.autonavi.com
+# 0.0.0.0 adiu.amap.com  误杀顺风车主接不到单
+cgicol.amap.com
+awaken.amap.com
+amap-aos-info-nogw.amap.com
+# 0.0.0.0 free-aos-cdn-image.amap.com  误伤一些图标
+optimus-ads-ykx.amap.com
+# 滴滴（①开屏广告会误伤主页一些图标的图）
+img-ys011.didistatic.com
+# 0.0.0.0 adtrack.xiaojukeji.com  滴滴顺风车主页面闪退到没网界面
+# 0.0.0.0 ut-static.udache.com  滴滴顺风车邀请车主贴图广告，误杀查看进行中的行程
+s3-hnapuhdd-cdn.didistatic.com  # 滴滴开屏2，节日
+# 去哪儿旅行（①顶部横幅广告图②开屏广告③强制升级弹窗）
+# 0.0.0.0 qimgs.qunarzz.com
+homefront.qunar.com
+minislugger.qunar.com
+# 携程&智行火车票(误杀智行推荐大量无图)
+dimg04.c-ctrip.com
+ma-adx.ctrip.com
+ad.12306.cn  # 12306开屏
+# 汽车之家广告(①开屏，其他№)
+adproxy.autohome.com.cn
+33.autohome.com.cn
+c.autohome.com.cn
+pcd.autohome.com.cn
+adm0.autoimg.cn
+adm1.autoimg.cn
+adm2.autoimg.cn
+adm3.autoimg.cn
+# 驾校一点通开屏
+richmanrules.ksedt.com
+adx.yiche.com  # 易车信息流广告
+# 花小猪打车(①②开屏缺一不可)
+as.hongyibo.com.cn
+res.hongyibo.com.cn
+scs.kakamobi.cn  # 驾考宝典开屏
+advert.api.thejoyrun.com  # 悦跑圈
+ads.51yund.com  # 悦动圈
+cdn.web.chelaile.net.cn  # 车来了_推荐
+w.zuzuche.com  # 租租车开屏&弹窗
+down.lltskb.com  # 路路通_更新
+# 懂车帝 （开屏在穿山甲那堆ib那条，ad词条不知道是什么，①部分信息流广告图）
+p3.dcarimg.com
+v3-dcar-ad.dcarvod.com
+v6-dcar-ad.dcarvod.com
+v9-dcar-ad.dcarvod.com
+v11-dcar-ad.dcarvod.com
+v26-dcar-ad.dcarvod.com
+# 货拉拉(要注册帐号登录才能细测)
+ads-log.huolala.cn
+www-ads.huolala.co
+# 飞猪旅行(基于9.10.8.104测试，这两条漏其中一条都会漏开屏广告，在飞猪APP上没发现有误杀，但其他阿里系就不清楚)
+pigeon.alicdn.com
+tbexpand.alicdn.com  # 视频开屏
+ares.guazi.com  # 瓜子二手车版本更新
+growth-tracker.guazi.com
+# 太平洋汽车网(①是网页正文的横幅+弹窗广告，APP的好像也没了，③④太平洋电脑，⑤母婴)
+act1.pcauto.com.cn
+imgad0.pcauto.com.cn
+countad.pconline.com.cn
+imgad0.pconline.com.cn
+imgad0.pcbaby.com.cn
+ads.ishansong.com  # 闪送(没发现开屏广告所以不知道是不是开屏)
+# 哈啰开屏广告(只禁①会漏)
+admaster-public.51downapp.cn
+g.fancyapi.com
+# 住•房
+# 安居客（开屏，会误伤底栏_我的的图标无图以及新房详情里的部分图标无图）
+pic6.ajkimg.com
+# 链家（①开屏 ②屏蔽更新）
+image2.ljcdn.com
+i-shadow2.ke.com
+z.5th.zone  # 住这儿开屏和横幅广告
+# 学•习•类
+# 印象笔记（误伤识堂_识堂话题 封面图）
+cdn.yinxiang.com
+# 扫描全能王开屏，误杀扫图转word等没网
+# 0.0.0.0 open.camscanner.com
+# 有道词典
+ad-sdk-config.youdao.com
+bucket-ynote-online-cdn.note.youdao.com
+dsp.youdao.com
+gorgon.youdao.com
+union.youdao.com
+dict-live.youdao.com
+wow.youdao.com
+wow-activity.youdao.com
+rlogs.youdao.com
+# 有道精品课(误伤首页横幅图片，其他图未知)
+oimagec4.ydstatic.com
+wanciwangdata.oss-cn-beijing.aliyuncs.com  # 万词王开屏和横幅广告
+# 学习通开屏，貌似没误杀
+learn.chaoxing.com
+# 百词斩(①不知道②开屏误杀少量图片)
+advertise.baicizhan.com
+vol.bczcdn.com
+version.yangcong345.com  # 洋葱学园更新
+materialcenter.gsxcdn.com  # 高途开屏广告，误杀少量营销活动类图片
+# 工•具•类
+# WiFi万能钥匙(尚网网络)
+a.wkanx.com  # 开屏广告、底部广告、插入式广告、我的_广告
+adx-ad-prod.wkanx.com  # 未知
+static.wkanx.com  # 连尚广告
+img01.51y5.net  # 右下角贴图
+movies.ttwifi.net  # 短剧
+track-config.y5kfpt.com
+track-gateway.y5kfpt.com
+# WiFi万能钥匙_好看
+cds.wifi188.com
+n.wifi188.com
+ocean-alps.wifi188.com
+# 迅雷
+advertpay-vip-ssl.xunlei.com
+test.adsp.xunlei.com
+api-mcp.adsp.xunlei.com
+advertpay-vip-ssl.xunlei.com
+watch.advertising.speed.cdn.vip.xunlei.com
+advertpay.vip.xunlei.com
+adsp.xunlei.com
+t03-api.xlmc.xunlei.com
+master.wap.dphub.sandai.net
+hub5u.wap.sandai.net
+idx.m.hub.sandai.net
+tw13b093.sandai.net
+uploadlog.xlmc.sandai.net
+pre.api.tw06.xlmc.sandai.net
+hub5pn.wap.sandai.net
+api-shoulei-ssl.xunlei.com
+biz.live.xunlei.com
+ct.niu.xunlei.com
+mou.niu.xunlei.com
+static.m.sjzhushou.com
+m.sjzhushou.com
+scene.vip.xunlei.com
+# 工时记录
+yun.tuitiger.com
+cdn.adxvip.com
+s.adxvip.com
+adui.tg.meitu.com  # 美颜相机
+ulike-api3.faceu.mobi  # 轻颜相机
+# 612咔叽(相机)，测试时没发现任何广告。不同于上面俩相机着实是开屏广告，这仨只是域名看着像广告。
+api-ad-data.kajicam.com
+api-trace.kajicam.com
+zjres-ad.kajicam.com
+# 夸克浏览器(①②更新提示缺一不可)
+open-cms-api.quark.cn
+puds.quark.cn
+adtrack.quark.cn
+track.lc.quark.cn
+# 99手游加速器(测试时也没发现广告)
+ad.99jiasu.com
+adstatis.99jiasu.com
+ad.xhey.top  # 今日水印相机
+ad.cyapi.cn  # 彩云天气
+fcard.api.moji.com  # 墨迹天气顶部横幅
+vdo.api.moji.com  # 墨迹天气_墨迹看点
+# 中国天气(①②信息流横幅广告，③右上角贴图)
+ads-sdk-api.ranfenghd.com
+ads-tracker.ranfenghd.com
+stqt.weathercn.com
+# 2345系APP开屏广告和弹窗广告和更新
+update.app.2345.com
+c-adx.2345.com
+business-syh-cdn.2345ii.com
+# WPS
+ad.docer.wps.cn
+adm.zookingsoft.com
+docerad.wps.cn
+update.thread0.com  # 自定义水印相机更新？
+# 百度输入法上传你输入了什么，副作用云联想词加载不出来。
+# 0.0.0.0 udpolimenew.baidu.com
+udpolimeok.baidu.com
+upl.baidu.com
+ads.uutest.cn  # 【测网速】
+# 网页[美国地址生成器]弹窗广告①上面②中间弹窗③几乎铺满全屏的大弹窗
+offfurreton.com
+gloaphoo.net
+firsecuckoo.com
+# 茄子快传(SHAREit)
+api-user.dalyfeds.com  # 屏蔽底栏[发现]页的短视频和[游戏]裡满屏的小游戏
+mcds.dalyfeds.com  # 开屏广告、[我的]页面广告、主页右下角伸缩贴图广告
+rs.dalyfeds.com  # 广告素材
+www.pullcf.com  # 首页的广告
+www.pullcm.com  # 好像没影响
+adconf.rqmob.com
+adcs.rqmob.com
+api.rqmob.com
+static.rqmob.com  # 首页上半部分的横幅视频、点进文件全屏弹窗、搜索小横幅广告
+# 其•他
+# 智联招聘(开屏和部分广告图，开屏倒计时仍然要霸占3秒才走，误伤少量图标)
+storage-public.zhaopin.cn
+# Keep（①图②视频开屏广告，①会误伤用户头像、首页_活动无图）
+static1.keepcdn.com
+v1.keepcdn.com
+kad.gotokeep.com
+# 百度网盘（①是开屏广告②网页分享页上半部分的广告图片）
+dss0.bdstatic.com
+staticsns.cdn.bcebos.com
+# 邮箱大师（①是开屏，nex为主页的广告）
+client.mail.163.com
+nex.163.com  # 网易主要的广告，网易邮箱大师首页插在邮件间的广告，网易新闻的开屏广告和首页资讯流广告
+appconf.mail.163.com  # 网易邮箱大师更新。副作用：没有配置文件不能点击通知直达邮件，只能到主界面。
+# 联通营业厅APP的开屏广告
+m1.ad.10010.com
+smartad.10010.com
+ad.admin.10010.com
+# 中国电信
+appupdate.189.cn  # 老版更新
+appupdates.189.cn  # 新版更新？
+bkappad.189.cn  # 广告？
+# 美柚(开屏&信息流)
+ad.seeyouyima.com
+pic-ad-ld.tupian1234.com
+# 宝宝树孕育，信息流+弹窗+开屏
+adx.babytree.com
+mapiweb.babytree.com
+plough.babytree.com
+tracking.babytree.com
+apishow.babybus.com  # 宝宝巴士开屏广告
+# 0.0.0.0 yoyo.qq.com 掌上穿越火线开屏
+# 蓝奏云分享页上的部分广告
+glores2.taisantech.com
+sanme2.taisantech.com
+www.ordedr.com  # 也是蓝奏云
+android-imgs.25pp.com  # 豌豆荚开屏广告，误杀首页顶部横幅大图和部分应用详情页顶部大图。
+adx-fb.wandoujia.com  # 未知。
+appapi.51job.com  # 前程无忧51job开屏广告，看着误杀大实际未发现
+cdn.yyb.gtimg.com  # 应用宝开屏广告，误杀福利和少部分图标。
+# 影音•娱乐类
+# 网易云音乐（据说②③影响了大喇叭，而且好像PC端播放不了）
+httpdns.music.163.com  # 会绕过hosts直接访问广告域名，误杀_无法打开更多模块，也就打不开更多和收藏的MV
+# 0.0.0.0 interface.music.163.com
+# 0.0.0.0 interface3.music.163.com
+# 0.0.0.0 interface.music.163.com.163jiasu.com  没网
+# 0.0.0.0 interface3.music.163.com.163jiasu.com  没网
+admusicpic.music.126.net
+iadmusicmat.music.126.net
+iadmusicmatvideo.music.126.net
+netapm.music.163.com
+# 0.0.0.0 ipv6.music.163.com
+# 0.0.0.0 ipv4.music.163.com
+# 小米·QQ音乐（前2未知，③是开屏广告）
+ad.tencentmusic.com
+adstats.tencentmusic.com
+us.l.qq.com  # QQ阅读开屏广告
+# QQ音乐
+wnsmusic.qq.com
+tmeadbak.y.qq.com
+ugcup.music.qq.com
+# 0.0.0.0 c6.y.qq.com  更新？
+# 0.0.0.0 base.music.qq.com  更新？
+# 酷我音乐（去开屏广告①②缺一不可，①会误伤主页的主banner轮播图，③是主页插入的广告如拼多多广告）
+kwimg3.kuwo.cn
+httpdns.kg.qq.com
+tmeadcomm.y.qq.com
+apk.shouji.koowo.com
+g.koowo.com
+deliver.kuwo.cn
+log.kuwo.cn
+mobilead.kuwo.cn
+msphoneclick.kuwo.cn
+updatepage.kuwo.cn
+wa.kuwo.cn
+webstat.kuwo.cn
+# 酷狗音乐（开屏还是搞不掉，新版好像突然沒了？）
+adserviceretry.kglink.cn  # 开屏广告？抓包到好多splash字符，测试。
+gatewayretry.kugou.com  # 不知道什么的广告，抓包到好多ad、ads字符，副作用也未知。
+serveraddr.service.kugou.com
+adservice.kugou.com
+adserviceretry.kugou.com
+ads.service.kugou.com
+adsfileretry.service.kugou.com
+adsfilebssdlbig.ali.kugou.com
+adsfile.bssdlbig.kugou.com  # 首页顶部横幅、编辑精选、我的顶部横幅图
+splashimgbssdl.yun.kugou.com
+splashimgretrybssdl.cloud.kugou.com
+gateway.kugou.com
+d.kugou.com
+downmobile.kugou.com
+gad.kugou.com
+gg.kugou.com
+install.kugou.com
+install2.kugou.com
+kgmobilestat.kugou.com
+log.stat.kugou.com
+minidcsc.kugou.com
+mo.kugou.com
+mobilelog.kugou.com
+msg.mobile.kugou.com
+mvads.kugou.com
+p.kugou.com
+push.mobile.kugou.com
+rtmonitor.kugou.com
+sdk.game.kugou.com
+sdn.kugou.com
+tj.kugou.com
+update.mobile.kugou.com
+tmeadkg.y.qq.com
+ads.bssdl.kugou.com
+channel.fanxing.kugou.com
+fanxing.kugou.com
+gamebox.kugou.com
+log.web.kugou.com
+song.fanxing.kugou.com
+ipv6.kg.qq.com
+# 喜马拉雅
+ad.ximalaya.com
+xdcs-collector.ximalaya.com
+adbehavior.ximalaya.com
+adbehavior.wsa.ximalaya.com
+adbehaviorhera.ximalaya.com
+adse.ximalaya.com
+adse.wsa.ximalaya.com
+adsehera.ximalaya.com
+gslbali.ximalaya.com  # 播放页视频广告
+gslbtx.ximalaya.com  # 播放页图片广告
+# 蜻蜓FM
+ad.qingting.fm
+admgr.qingting.fm
+dload.qd.qingting.fm
+logger.qingting.fm
+s.qd.qingting.fm
+s.qd.qingtingfm.com
+adlaunch.qtfm.cn
+ad-cdn.qtfm.cn
+# 1905电影网
+afp.m1905.com
+counter.m1905.com
+trace.m1905.cn
+vodlog.m1905.cn
+link.1905.com
+# 乐视
+n.mark.le.com  # 片头视频广告
+ark.letv.com
+fz.letv.com
+g3.letv.com
+g3.letv.cn
+minisite.letv.com
+ad-mob-app.le.com
+letv.axp.admaster.com.cn
+apple.www.letv.com
+dc.letv.com
+# 乐视TV
+api.game.letvstore.com
+dev.dc.letv.com
+msg.m.letv.com
+n.mark.letv.com
+static.app.m.letv.com
+test.ark.letv.com
+cdn.hpplay.com.cn  # 乐投屏
+# PPTV
+ads.aplus.pptv.com
+de.as.pptv.com
+pub.aplus.pptv.com
+ads.data.pplive.com
+ppvabs.pplive.com
+mads.suning.com
+ex.as.pptv.com
+app.aplus.pptv.com
+as.aplus.pptv.com
+img1.g.pptv.com
+img2.g.pptv.com
+img3.g.pptv.com
+jp.as.pptv.com
+static.g.pptv.com
+tj.g.pptv.com
+asimgs.pplive.cn
+gas.data.pplive.com
+plt.data.pplive.com
+web.data.pplive.com
+vpptv.admaster.com.cn
+pptv.m.cn.miaozhen.com
+tpptv.ipdx.cn.miaozhen.com
+# 芒果TV（首次打开显示没网，后面正常）
+mobile.da.mgtv.com  # 开屏
+mobile2.da.mgtv.com  # 片头
+xnet.da.mgtv.com  # 小米视频的芒果TV片头广告
+pc.da.mgtv.com
+android.bz.mgtv.com
+collect.bz.mgtv.com
+community.bz.mgtv.com
+credits.bz.mgtv.com
+dc.bz.mgtv.com
+dflow.bz.mgtv.com
+encounter.bz.mgtv.com
+floor.bz.mgtv.com
+galaxy.bz.mgtv.com
+layer.bz.mgtv.com
+me.bz.mgtv.com
+mob.bz.mgtv.com
+mobileso.bz.mgtv.com
+mp.bz.mgtv.com
+rprain.bz.mgtv.com
+vip.bz.mgtv.com
+vod-box.bz.mgtv.com
+img.da.mgtv.com
+py.da.mgtv.com
+v2.da.mgtv.com
+ys.da.mgtv.com
+dflow.titan.mgtv.com
+disp.titan.mgtv.com
+stat.titan.imgo.tv
+aphone_pv_log.kltb.com.cn
+mgpay-api.kltb.com.cn
+security-platform.kltb.com.cn
+x.da.hunantv.com
+y.da.hunantv.com
+mobaliyun.res.mgtv.com  # TV端片头
+httpdns.bz.mgtv.com
+m2.da.mgtv.com
+m.da.mgtv.com
+httpdns.ng.imgo.tv
+# 芒果TV-TV端
+ottupdate.api.mgtv.com
+ottupdate2.api.mgtv.com
+ott.liveapi.mgtv.com
+4img.mgtv.com  # 退出时弹出的广告
+ttupdate2.api.mgtv.com  # 更新?
+ottupdate.api.nunaios.com  # 更新?
+# 咪咕视频、音乐、阅读开屏和部分图片广告（②）
+adxserver.ad.cmvideo.cn
+ggc.cmvideo.cn
+dspserver.ad.cmvideo.cn
+# 爱奇艺
+api.iqiyi.com  # 更新、弹窗广告，误杀弹幕。
+t7z.cupid.iqiyi.com  # 客户端片头广告，手机网页会加载不了片头广告而无法播放视频，电脑网页配合插件就没影响。
+t7z.cupid.ptqy.gitv.tv  # 电视端奇异果片头广告
+act.vip.iqiyi.com
+iface.iqiyi.com
+iface2.iqiyi.com  # 一些弹窗和广告，误杀播放界面弹幕等功能按钮
+cr-status.iqiyi.com
+paopao.iqiyi.com
+paopao-monitor.iqiyi.com
+puma-api.iqiyi.com
+ad.m.iqiyi.com
+afp.iqiyi.com
+api.cupid.iqiyi.com
+cupid.iqiyi.com
+c.uaa.iqiyi.com
+cloudpush.iqiyi.com
+cm.passport.iqiyi.com
+emoticon.sns.iqiyi.com
+gamecenter.iqiyi.com
+hotchat-im.iqiyi.com
+ifacelog.iqiyi.com
+mbdlog.iqiyi.com
+meta.video.qiyi.com
+rcd.iqiyi.com
+cmts.iqiyi.com
+data.video.qiyi.com
+msg.71.am
+msga.cupid.iqiyi.com
+viqiyi.admaster.com.cn
+iqiyim.adtrack.enlightent.cn
+# 优酷，①片头广告，不全，会漏。
+vali-g1.cp31.ott.cibntv.net
+yk-ssp.ad.youku.com
+appdownload.youku.com
+amdc.m.youku.com
+atm.youku.com
+m.atm.youku.com
+acs.youku.com  # 信息流&弹窗
+un-acs.youku.com  # 开屏
+actives.youku.com
+ad.api.3g.tudou.com
+ad.api.3g.youku.com
+ad.api.mobile.youku.com
+ad.mobile.youku.com
+a-dxk.play.api.3g.youku.com
+b.smartvideo.youku.com
+c.yes.youku.com
+das.api.youku.com
+das.mobile.youku.com
+dev-push.m.youku.com
+dl.g.youku.com
+dmapp.youku.com
+gamex.mobile.youku.com
+hudong.pl.youku.com
+huodong.pl.youku.com
+huodong.vip.youku.com
+hz.youku.com
+iyes.youku.com
+l.ykimg.com
+lstat.youku.com
+m.yes.youku.com
+mobilemsg.youku.com
+msg.youku.com
+myes.youku.com
+p.l.youku.com
+passport-log.youku.com
+p-log.ykimg.com
+push.m.youku.com
+r.l.youku.com
+s.p.youku.com
+sdk.api.gamex.mobile.youku.com
+sdk.m.youku.com
+stat.youku.com
+store.tv.api.3g.youku.com
+store.xl.api.3g.youku.com
+tdrec.youku.com
+test.ott.youku.com
+urchin.lstat.youku.com
+v.l.youku.com
+val.api.youku.com
+wan.youku.com
+ykatr.youku.com
+ykrec.youku.com
+apiv4-iyes.youku.com  # 250111
+cad.youku.com
+m-vali.cp31.ott.cibntv.net
+mc.atm.youku.com
+pre-acs.youku.com
+ykad-data.youku.com
+youku-acs.m.taobao.com
+adx-open-service.youku.com
+# 酷喵影视（CIBN优酷）
+pl.cp31.ott.cibntv.net  # 酷喵(优酷)片头？
+vali-ugc.cp31.ott.cibntv.net  # 淘票票详情页上方的简介视频无法播放
+api.adv.ott.cibntv.net
+openstorage.ad.cmvideo.cn
+ipm.atm.cp31.ott.cibntv.net
+val.atm.cp31.ott.cibntv.net
+valf.atm.cp31.ott.cibntv.net
+vali.cp31.ott.cibntv.net
+vali.cp31.ott.cibntv.net.302.myalicdn.com
+ems.cp31.ott.cibntv.net
+youku-dtv.m.cn.miaozhen.com
+image.9xsecndns.cn
+px.ucweb.com
+ipm.atm.youku.com
+orange-dc.youku.com
+ykugc.cp31.ott.cibntv.net
+vali-dns.cp31.ott.cibntv.net
+heyi-acs.cp31.ott.cibntv.net
+ott.cibntv.net
+pis-pcdn.youku.com
+appupgrade.alicdn.com  # 更新？
+appupgrade.cp12.ott.cibntv.net  # 更新？
+valipl.cp31.ott.cibntv.net  # 片头？
+yk-ssp-ad.cp31.ott.cibntv.net
+# 云视听极光(腾讯视频电视端)
+sv-video.play.aiseet.atianqi.com  # 云视听极光（腾讯视频TV版）片头广告，V15.9发现已失效。
+andrqd.play.aiseet.atianqi.com
+otheve.play.aiseet.atianqi.com
+othstr.play.aiseet.atianqi.com
+news-l.play.aiseet.atianqi.com
+p-l.play.aiseet.atianqi.com
+t-l.play.aiseet.atianqi.com
+aiseet.aa.atianqi.com
+dp3.play.aiseet.atianqi.com
+livep.l.aiseet.atianqi.com
+lives.l.aiseet.atianqi.com
+monitor-uu.play.aiseet.atianqi.com
+sdkconfig.play.aiseet.atianqi.com
+tencent-dtv.m.cn.miaozhen.com
+mtrace.play.aiseet.atianqi.com
+btrace.play.aiseet.atianqi.com
+ad-reward.play.aiseet.atianqi.com
+# 腾讯云视频极光测试250318
+sdk-e.play.aiseet.atianqi.com
+qrapi.play.aiseet.atianqi.com
+# 其它和其他端
+gvod.aiseejapp.atianqi.com
+tv.aiseet.atianqi.com
+vv.play.aiseet.atianqi.com
+omgmta.play.aiseet.atianqi.com
+misc.in.duokanbox.com
+# 酷云_电视广告数据
+tvapi.kuyun.com
+logonext.tv.kuyun.com
+config.kuyun.com
+# 小米视频电视端
+tat.pandora.xiaomi.com
+stat.pandora.xiaomi.com
+upgrade.mishop.pandora.xiaomi.com
+mishop.pandora.xiaomi.com
+dvb.pandora.xiaomi.com
+de.pandora.xiaomi.com
+jellyfish.pandora.xiaomi.com
+gallery.pandora.xiaomi.com
+bss.pandora.xiaomi.com
+appstore.cdn.pandora.xiaomi.com
+appstore.pandora.xiaomi.com
+b.netcheck.gallery.pandora.xiaomi.com
+broker.mqtt.pandora.xiaomi.com
+milink.pandora.xiaomi.com
+misc.pandora.xiaomi.com
+pandora.mi.com
+redirect.pandora.xiaomi.com
+tv.weixin.pandora.xiaomi.com
+tvmanager.pandora.xiaomi.com
+tvmgr.pandora.xiaomi.com
+assistant.pandora.xiaomi.com
+starfish.pandora.xiaomi.com
+video.market.xiaomi.com
+auth.api.gitv.tv
+data.video.ptqy.gitv.tv
+msg.ptqy.gitv.tv
+api.poll.aiseet.atianqi.com
+upgrade.ptmi.gitv.tv  # 小米电视升级
+# 0.0.0.0 t2.market.mi-img.com
+# 0.0.0.0 t1.market.mi-img.com
+# 0.0.0.0 t1.a.market.xiaomi.com
+# 0.0.0.0 t2.a.market.xiaomi.com
+# 虎牙 24.04云更新后开屏和信息流都去不掉了
+business.msstatic.com
+e-ad-monitor.huya.com
+live-ads.huya.com
+au.qq.com  # 开屏？240813测试
+post-1254361794.file.myqcloud.com  # 埋堆堆(看TVB的)开屏
+rtbapi.douyucdn.cn  # 斗鱼开屏配置文件？非图，但禁了就不展示广告。
+ottimg.cdn.pandora.xiaomi.com  # 小米音箱(原小爱音箱)开屏广告
+# 央视系广告
+res.ads.cctv.com
+sspapi.ads.cctv.com
+tracker.ads.cctv.com
+adstore-index-1252524079.file.myqcloud.com
+# 糖豆(广场舞)片头广告？
+creative.medproad.com
+qcwx.medproad.com
+update0.qquanquan.com  # 韩小圈更新？
+# DNS，可能会导致hosts失效
+httpdns.c.cdnhwc2.com
+httpdns1.cc.cdnhwc5.com
+httpdns.pro
+httpdns.alicdn.com
+dns.qq.com
+doh.dns.apple.com
+doh.iqiyi.com
+doh.ptqy.gitv.tv
+dotserver.douyucdn.cn
+dns.qiyipic.iqiyi.com
+dns.weibo.cn
+httpdns-api.aliyuncs.com
+httpdns-browser.platform.dbankcloud.cn
+httpdns-sc.aliyuncs.com
+httpdns.baidu.com
+httpdns.bcelive.com
+httpdns.bilivideo.com
+httpdns.browser.miui.com
+httpdns.cctv.com
+httpdns.danuoyi.tbcache.com
+httpdns.gslb.yy.com
+httpdns.huaweicloud.com
+httpdns.n.shifen.com
+# 0.0.0.0 httpdns.ocloud.heytapmobi.com
+# 0.0.0.0 httpdns.ocloud.oppomobile.com
+httpdns.platform.dbankcloud.cn
+httpdns.platform.dbankcloud.com
+# 0.0.0.0 httpdns.push.heytapmobi.com
+# 0.0.0.0 httpdns.push.oppomobile.com
+httpdns.volcengineapi.com
+httpdns.zybang.com
+lofter.httpdns.c.163.com
+music.httpdns.c.163.com
+httpdns.immomo.com
+# 腾讯优量汇广告
+dutils.com
+www.dutils.com
+abroad-sdk-push.dutils.com
+sdk-push.dutils.com
+api-c.dutils.com
+api-d.dutils.com
+api-devs.dutils.com
+api-df.dutils.com
+api-dll.dutils.com
+api-error.dutils.com
+api-exc.dutils.com
+api-fc.dutils.com
+api-fd.dutils.com
+api-gd.dutils.com
+api-md.dutils.com
+api-md-b.dutils.com
+api-md-c.dutils.com
+api-md-d.dutils.com
+api-md-e.dutils.com
+api-md-f.dutils.com
+api-md-g.dutils.com
+api-md-k.dutils.com
+api-md-l.dutils.com
+api-md-m.dutils.com
+api-md-q.dutils.com
+api-md-s.dutils.com
+api-verify.dutils.com
+cache-verify.dutils.com
+cdn-api-verify.dutils.com
+devs-data.dutils.com
+g-adnet.dutils.com
+m-adnet.dutils.com
+log-verify.dutils.com
+m-adnet.dutils.com
+jp-api-fc.dutils.com
+jp-api-fd.dutils.com
+jp-devs-data.dutils.com
+c.mpl.dutils.com
+m.mpl.dutils.com
+h.m.mpl.dutils.com
+opabl-api-r.dutils.com
+us-api-d.dutils.com
+us-api-fc.dutils.com
+us-devs-data.dutils.com
+v6-api-c.dutils.com
+v6-api-d.dutils.com
+v6-api-fc.dutils.com
+v6-m.mpl.dutils.com
+v6-devs-data.dutils.com
+667057482479489024-rta-api.dutils.com
+# 腾讯广告
+lcsdk.3g.qq.com
+masdk.3g.qq.com
+analy.qq.com
+beacon.qq.com
+beaconcdn.qq.com
+mqqeve.beacon.qq.com
+oth.str.beacon.qq.com
+e.qq.com
+sdk.e.qq.com
+sdkreport.e.qq.com
+tangram.e.qq.com
+mi.gdt.qq.com  # 旧版微博国际版开屏
+rpt.gdt.qq.com
+v.gdt.qq.com
+v2.gdt.qq.com
+win.gdt.qq.com
+l.qq.com
+c.l.qq.com
+livep.l.qq.com
+lives.l.qq.com
+news.l.qq.com
+p.l.qq.com
+analytics.map.qq.com
+log.tbs.qq.com
+trace.qq.com
+vqq.admaster.com.cn
+www.vqq.admaster.com.cn
+apd-pcdnvodstat.teg.tencent-cloud.net
+apd-vodp2pnat.teg.tencent-cloud.net
+otheve.beacon.qq.com
+tmead.y.qq.com
+# 0.0.0.0 h.trace.qq.com 误杀手游加速器功能页
+hb.kg.qq.com
+oth.str.mdt.qq.com
+oth.eve.mdt.qq.com
+adsmind.gdtimg.com
+qzs.gdtimg.com
+oth.update.mdt.qq.com
+othstr.beacon.qq.com
+mtrace.qq.com
+aeventlog.beacon.qq.com
+astrategy.beacon.qq.com
+eventlog.beacon.qq.com
+strategy.beacon.qq.com
+union.gdtimg.com
+splashqqlive.gtimg.com
+yybadaccess.3g.qq.com
+w.l.qq.com
+swa.gtimg.com
+lb.gtimg.com
+tui.gtimg.com
+wb.gtimg.com
+beacon.gtimg.com
+discuz.gtimg.cn
+wa.gtimg.com
+pgdt.gtimg.com
+# 腾讯！
+ad.weixin.qq.com
+adfilter.imtt.qq.com
+adpm.app.qq.com
+adrdir.qq.com
+ads.privacy.qq.com
+adsgroup.qq.com
+adsmind.apdcdn.tc.qq.com
+adsmind.tc.qq.com
+adss.video.qq.com
+adstextview.qq.com
+adsview.qq.com
+adsview2.qq.com
+adv.app.qq.com
+adver.qq.com
+# 0.0.0.0 aegis.qq.com  误杀手游加速器功能页
+as.weixin.qq.com
+badjs.qq.com
+bs.l.qq.com
+btrace.qq.com
+btrace.video.qq.com
+c2.gdt.qq.com
+c2.l.qq.com
+canvas.gdt.qq.com
+cb.l.qq.com
+# 0.0.0.0 cgi.connect.qq.com  据说误杀王者荣耀QQ登录，测试未发现异常；以及游戏120帧，未测。 据说安卓抖音异常？
+cm.e.qq.com
+cm.l.qq.com
+d.gdt.qq.com
+dir.minigame.qq.com
+# 0.0.0.0 dldir1.qq.com  腾讯手游加速器开屏广告，误杀微信官网网页无法下载安卓版微信、微信视频号封面图和UP主头像。
+# 0.0.0.0 dldir2.qq.com
+# 0.0.0.0 dldir3.qq.com  误杀欢乐麻将不少道具图标和角色装扮。
+# 0.0.0.0 dldir4.qq.com
+# 0.0.0.0 dldir5.qq.com
+gdt.qq.com
+hm.l.qq.com
+i.gdt.qq.com
+info.gdt.qq.com
+infotrack.gdt.qq.com
+ipv4.gdt.qq.com
+# 0.0.0.0 isee.weishi.qq.com 微视_短剧_短剧广场会没网
+jrlt.beacon.qq.com
+jsapi.html5.qq.com
+jsapi.qq.com
+jsqmt.qq.c
+jsqmt.qq.com
+k.ssp.qq.com
+l2.l.qq.com
+lb.l.qq.com
+livem.l.qq.com
+livep.l.ott.video.qq.com
+lives.l.ott.video.qq.com
+ls.l.qq.com
+m.gdt.qq.com
+mark.l.qq.com
+mdt.qq.com
+mig.str.mdt.qq.com
+mtt.eve.mdt.qq.com
+n.ssp.qq.com
+nc.gdt.qq.com
+news-l.play.ott.video.qq.com
+oimsgad.qq.com
+omgid.qq.com
+omgmta.play.ott.video.qq.com
+op.ssp.qq.com
+openmsf.3g.qq.com
+oth.eve.qq.com
+p.buluo.qq.com
+p.mb.qq.com
+p.ssp.qq.com
+p.store.qq.com
+p2.l.qq.com
+p3.l.qq.com
+pacaio.match.qq.com
+pagespeed.report.qq.com
+pcbrowser.dd.qq.com
+pic640.weishi.qq.com
+pinghot.qq.com
+pingmid.qq.com
+pingtas.qq.com
+pms.mb.qq.com
+pnewsapp.tc.qq.com
+prom.b.qq.com
+ps.browser.qq.com
+ptlogin2.bugly.qq.com
+push.pgl.qq.com
+pvstat.html5.qq.com
+qappcenterv6.3g.qq.com
+qautodl.qq.com
+qbreport.html5.qq.com
+qos.report.qq.com
+qq.5glyqw.com
+qq.8368661.com
+qq.85180405062.top
+qq.com.5q69n.cn
+qq.guansenff.cn
+qq.hixili.top
+qq.irs01.com
+qq.kuaipai666.cn
+qq.liuzishen.com
+qq.sakuraquant.com
+qq.shu008.com
+qq.vvx.highter.top
+qq.wrating.com
+qqdata.ab.qq.com
+# 0.0.0.0 qqlogo.qq.com
+qqshow2-item.qq.com
+qss-client.qq.com
+qzpb.qq.com
+qzs.qq.com
+r.cnews.qq.com
+r.qq-hls.xyz
+rcgi.video.qq.com
+reader.sh.vip.qq.com
+recmd.html5.qq.com
+report.cms.qq.com
+report.qq.com
+report.vip.qq.com
+rh.qq.com
+rlog.video.qq.com
+rm.gdt.qq.com
+rmpad.imtt.qq.com
+rqd.qq.com
+s.gdt.qq.com
+s.isdspeed.qq.com
+s.pcapps.qq.com
+s.pcmgr.qq.com
+sasdk.3g.qq.com
+sdkconfig.video.qq.com
+sdksp.video.qq.com
+sdksp6.video.qq.com
+sec.video.qq.com
+setting.snswin.qq.com
+show-msgch.qq.com
+showwxml.qq.com
+sngapm.qq.com
+soft.tbs.imtt.qq.com
+soup.v.qq.com
+sqsh.3g.qq.com
+stat.gamedl.qq.com
+stat.y.qq.com
+statistic.qzone.qq.com
+stdl.qq.com
+sync.3g.qq.com
+szlong.weixin.qq.com
+t.gdt.qq.com
+t.l.qq.com
+taobao.qq.com
+tdc.qq.com
+ten.sngapm.qq.com
+tgw-masdk.3g.qq.com
+tgw-sasdk.3g.qq.com
+tj.b.qq.com
+u.l.qq.com
+uc.qq.uuaoz.com
+union.discuz.qq.com
+upload_data.qq.com
+uploadlog.p2p.qq.com
+user1.game.qq.com
+uu.qq.com
+v6ii.gdt.qq.com
+variety.tc.qq.com
+vd.l.qq.com
+vhotlxp.video.qq.com
+video.dispatch.tc.qq.com
+video.mpush.qq.com
+video.ureport.push.qq.com
+video.wap.mpush.qq.com
+vlive.qqvideo.tc.qq.com
+vmindhls.tc.qq.com
+vp.html5.qq.com
+vpic.video.qq.com
+vr.gdt.qq.com
+vshi.tc.qq.com
+vweixinthumb.tc.qq.com
+w.cnews.qq.com
+w.inews.qq.com
+wap.mpush.qq.com
+weblog.html5.qq.com
+weixin.qq.hellocdn.top
+weixin.qq.huigun.top
+wit.qq.com
+wxs.qq.com
+wxsnsad.tc.qq.com
+wxsnsdy.tc.qq.com
+wxsnsdy.video.qq.com
+x.adnet.qq.com
+x.l.qq.com
+xc.gdt.qq.com
+xj.gdt.qq.com
+xmaterial.tu.qq.com
+yeah.qq.com
+zhizi.qq.com
+mtt.str.mdt.qq.com
+public.gdtimg.com
+cmshow.gtimg.cn
+cc.map.qq.com
+beacon.cdn.qq.com  # 250111测试
+tmfmazu-wangka.m.qq.com  # 腾讯的追踪器？
+tmfmazuhttp-wangka.m.qq.com
+qd-update.qq.com  # 未知
+youxi.gamecenter.qq.com  # 未知
+game.eve.mdt.qq.com
+open.gtimg.cn  # 道聚城开屏？
+c1.gdt.qq.com
+c3.gdt.qq.com
+v2mi.gdt.qq.com
+v1.gdt.qq.com
+v3.gdt.qq.com
+appcfg.v.qq.com
+mmgr.gtimg.com
+up-hl.3g.qq.com
+vd6.l.qq.com
+tianshu.qq.com  # 腾讯文档弹窗
+# 0.0.0.0 h5.qzone.qq.com  据说是腾讯文档首页横幅
+control.vpn.qq.com  # 腾讯手游加速器开屏广告和弹窗广告，但是误杀底栏_游戏_我的 一片空白。
+# h.trace.qq.com和aegis.qq.com必须一起放行，不然手游加速器一些功能界面明明能打开但是秒跳转显示没网。
+a.gdt.qq.com
+event.gdt.qq.com
+# QQ浏览器
+adsolution.imtt.qq.com
+adsense.html5.qq.com
+mqqad.cs0309.html5.qq.com
+mqqad.html5.qq.com
+tpush.html5.qq.com
+mqqadr.reader.qq.com
+game.html5.qq.com
+jpush.html5.qq.com
+novelsns.html5.qq.com
+cooperation.html5.qq.com
+zixuncooperation.html5.qq.com
+kde.qq.com  # 小说的广告
+ug.qbimg.qq.com  # 开屏和首页下面的弹出式伸缩的广告图。
+mcdn.kandian.qq.com  # 开屏
+m4.publicimg.browser.qq.com  # 直达_搜索框上方的广告贴图。
+# 0.0.0.0 qbuc.html5.qq.com  底栏我的 的营销卡片和工具卡片
+# QQ
+ca.gtimg.com
+q.i.gdt.qq.com
+c.gdt.qq.com
+updatecenter.qq.com
+tangram-config.gdt.qq.com
+# 下载？
+c.gj.qq.com
+# 0.0.0.0 c.pc.qq.com  QQ群链接安全中转页无法直接点开
+download.sj.qq.com
+t.sj.qq.com
+ws.sj.qq.com
+# 腾讯视频
+acc.qq.com  # 腾讯视频片头广告，已知8.5~8.9版本安装完APP头三次打开APP播放不了视频，关掉再开，重复几次就好了；7.5.0和定制版8.6没网，需要移除本条，移除后7.5也不会有片头广告；9.0.X去片头后其它正常。
+vv6.video.qq.com  # 腾讯视频9.0之后的开屏广告
+bla.gtimg.com
+ra.gtimg.com
+adsrich.qq.com
+tj.video.qq.com
+imc.l.qq.com
+livec.l.qq.com
+livew.l.qq.com
+m.l.qq.com
+p.tencentmind.com
+api.poll.video.qq.com
+static-res.qq.com
+tetrack.qq.com
+xs.gdt.qq.com
+xsweb.gdt.qq.com  # QQ阅读抓出
+isrpt-vn.gdt.qq.com
+# 欢乐麻将弹窗广告。两个都能单独屏蔽抽奖的弹窗广告(活动领奖励的弹窗未屏蔽)，第二个看起来还有别家用可能会误杀，好像是游戏资源下载
+hlmj.broker.tplay.qq.com
+# 0.0.0.0 down.pandora.qq.com
+# 隐私相关(GitHub扒)
+wup.imtt.qq.com
+huatuo.qq.com  # 华佗诊断
+ping.huatuo.qq.com
+tpns.tencent.com
+stat.tpns.tencent.com
+# 0.0.0.0 access1.tpns.tencent.com  会误杀酷安没有推送。 禁用腾讯推送相关组件也会没推送。
+# 阿里广告
+abtest.alibaba.com
+hydra.alibaba.com
+orange-dc.alibaba.com
+o2o-ad-clicking.alibaba.com
+# 0.0.0.0 appdownload.alicdn.com  闲鱼聊天发送图片界面初始化被卡住
+# 0.0.0.0 download.alicdn.com 影响酷安部分阿里系APP下载，定制版淘宝更新资源包
+ossgw.alicdn.com
+gma.alicdn.com
+s.click.aliexpress.com
+acjs.aliyun.com
+beacon-api.aliyuncs.com
+click.aliyun.com
+fineboost-loghub.ap-southeast-1.log.aliyuncs.com
+o2o-ad-dev.oss-cn-shanghai.aliyuncs.com
+aecpm.alicdn.com
+afp.alicdn.com
+afpmm.alicdn.com
+asearch.alicdn.com
+atanx.alicdn.com
+atanx2.alicdn.com
+gen.alicdn.com
+baichuan-sdk.alicdn.com
+baichuan-sdk.taobao.com
+acs4baichuan.m.taobao.com  # 据说是淘宝授权，可我也没发现APP不能调用登录
+nbsdk-baichuan.alicdn.com
+adash.man.aliyuncs.com
+cdn-ads.oss-cn-shanghai.aliyuncs.com
+unidesk.alicdn.com
+ilce.alicdn.com
+proxy-mob-cld.alicdn.com
+umdc.aliapp.org
+adash-emas.cn-hangzhou.aliyuncs.com
+admonitor-feedback.cn-hangzhou.log.aliyuncs.com  # 从菜鸟
+bixi.alicdn.com  # 阿里系应用版本太低提示页面？
+cdn.ynuf.aliapp.org  # 云控&配置?
+ynuf.aliapp.org  # 据说误杀饿了么学生福利红包
+adash.man.aliyuncs.com  # 阿里云-用户行为分析隐私上报
+ad-host-backup-america.oss-us-west-1.aliyuncs.com
+ad-host-backup-asia.oss-ap-southeast-1.aliyuncs.com
+ad-host-backup-europe.oss-eu-central-1.aliyuncs.com
+# 淘宝广告
+# 0.0.0.0 acs.m.taobao.com  会导致一些新装的阿里系APP没网，连过网再禁却没事，可能是和初始化有关。阿里云盘卡开屏。
+wcp.taobao.com  # 淘宝开屏？
+adash.m.taobao.com
+adashbc.ut.taobao.com
+adashx4ae.ut.taobao.com
+h-adashx.ut.taobao.com
+adashx.ut.cainiao.com
+adashxgc.ut.taobao.com
+audid-api.taobao.com
+simaba.taobao.com
+m.simaba.taobao.com
+amdcopen.m.taobao.com  # 阿里云内置域名解析服务
+accscdn.m.taobao.com
+adashx4yt.m.taobao.com
+tunion-api.m.taobao.com
+adashx.m.taobao.com
+c-adash.m.taobao.com
+m-adash.m.taobao.com
+ff.win.taobao.com
+intl.wapa.taobao.com
+intl.waptest.taobao.com
+w.m.taobao.com
+strip.taobaocdn.com
+adashbc.m.taobao.com
+eco.taobao.com
+umengacs.m.taobao.com
+umengjmacs.m.taobao.com
+openjmacs.m.taobao.com
+dsp.simba.taobao.com
+sjarvis.taobao.com
+h-adashx4yt.ut.taobao.com
+openacs.m.taobao.com
+# 0.0.0.0 msgacs.m.taobao.com  淘宝和店铺聊天消息
+acs4public.m.taobao.com
+accscdn4public.m.taobao.com
+qh-material.taobao.com  # 莉景天气开屏广告
+# ali-mama
+a.alimama.cn
+img.alimama.cn
+afptrack.alimama.com
+afpssp.alimama.com
+mum.m.alibaba.com
+umeng.com.gds.alibabadns.com
+# 京东广告
+# 0.0.0.0 dg.k.jd.com 值得买无法跳转京东
+janapi.jd.com
+mapi.m.jd.com
+img.360buyimg.com
+img1.360buyimg.com
+img2.360buyimg.com
+img3.360buyimg.com
+# 0.0.0.0 img10.360buyimg.com 一号店开屏，但会误杀京东部分商品详情页的图。
+ads-union.jd.com
+ads.union.jd.com
+bdsp.x.jd.com
+blackhole.m.jd.com
+c-nfa.jd.com
+c.fa.jd.com
+cc.m.jd.com
+ccc.x.jd.com
+cm.jd.com
+dgstatic.jd.com
+dsp-x.jd.com
+du.jd.com
+firevent.jd.com
+gia.jd.com  # 礼品卡？也能打开啊
+im-x.jd.com
+img-x.jd.com
+jcm.jd.com
+jd-mail.co.uk
+jd.btmeifeng.cn
+jd.c-ptsp.com.cn
+jd.com.pesbbw.cn
+jd.jxmzyg.com
+jd.revolvermaps.com
+jd.sundxs.com
+jd.wxnmvwb.cn
+jd.zxsmxt.com
+jrad.jd.com
+jrclick.jd.com
+jzt.jd.com
+kepler.jd.com
+knicks.jd.com
+m.jd.watbc.top
+m.jd.watbe.top
+mars.jd.com
+mercury.jd.com
+orbit.jd.com
+pic.jd-bbs.com
+policy.jd.com
+skdisplay.jd.com
+stat.m.jd.com
+u-x.jd.com
+u.x.jd.com
+union.m.jd.com
+wl.jd.com
+wn.x.jd.com
+www.jd-mail.co.uk
+x.jd.com
+xlog.jd.com
+zt.jd.com
+dns.jd.com
+smartopen.jd.com
+# 百度广告
+hmcdn.baidu.com
+cbjs.baidu.com
+cpro.baidu.com
+eclick.baidu.com
+mtj.baidu.com
+mobads.baidu.com
+mobads-logs.baidu.com
+update.baidu.com  # 更新？
+# 新浪新闻首页插入的广告封面图+视频
+feed-image.baidu.com
+nadvideo2.baidu.com
+adscdn.baidu.com
+baichuan.baidu.com
+cm.baichuan.baidu.com
+nj.baichuan.baidu.com
+cm.pos.baidu.com
+click.bes.baidu.com
+rplog.baidu.com
+fclick.baidu.com
+fexclick.baidu.com
+qianclick.baidu.com
+sclick.baidu.com
+snippet.pos.baidu.com
+api.share.baidu.com
+bdimg.share.baidu.com
+share.baidu.com
+ecma.bdimg.com
+ecmb.bdimg.com
+pups.bdimg.com
+su.bdimg.com
+cpro2.baidustatic.com
+dup.baidustatic.com
+rigel.baidustatic.com
+ubmcmm.baidustatic.com
+cbjslog.baidu.com
+eiv.baidu.com
+entry.baidu.com
+ers.baidu.com
+idm.bce.baidu.com
+push.zhanzhang.baidu.com
+s.cpro.baidu.com
+a.baidu.com
+bdplus.baidu.com
+btlaunch.baidu.com
+c.baidu.com
+cb.baidu.com
+charge.adapp.baidu.com
+crs.baidu.com
+datax.baidu.com
+hdj.baidu.com
+hmma.baidu.com
+imageplus.baidu.com
+inside.baidu.com
+kstj.baidu.com
+mobads-speed.baidu.com
+mssp.baidu.com
+nlog.baidu.com
+openrcv.baidu.com
+rp.baidu.com
+testwn.baidu.com
+tipsdk.baidu.com
+unstat.baidu.com
+znsv.baidu.com
+ae.bdstatic.com
+# 0.0.0.0 b.bdstatic.com  一些图标，比如百家号的视频的播放暂停按钮▶️，不影响点击播放
+bce.baidu.com
+mipcache.bdstatic.com
+su.bdstatic.com
+zz.bdstatic.com
+pic.rmb.bdstatic.com
+adm.baidu.com
+als.baidu.com  # 并非贴吧签到
+cm.baidu.com
+idm-su.baidu.com
+msite.baidu.com
+river.zhidao.baidu.com
+wangmeng.baidu.com
+sp0.baidu.com
+qapm.baidu.com
+fclog.baidu.com
+# 0.0.0.0 sofire.baidu.com  百度慧推,用户数据收集与分析,误伤贴吧lite的一键签到
+tcbox.baidu.com
+browserkernel.baidu.com
+hijack.baidu.com
+hpd.baidu.com
+cdn-haokanapk.baidu.com
+adavideo.baidu.com
+ada.baidu.com  # 竞价推广？
+tuijian.baidu.com
+ucstat.baidu.com
+# 0.0.0.0 code.bdstatic.com  误杀百度地图(V19)_底栏_周边
+dss2.bdstatic.com
+fex.bdstatic.com
+# 0.0.0.0 mbdp02.bdstatic.com  百家号打不开
+nspt.bdstatic.com
+s.bdstatic.com
+qianbao.baidu.com
+techain.baidu.com
+httpsdns.baidu.com
+bes-mtj.baidu.com  # 250326
+click-bes.baidu.com
+g.baidu.com  # 250615
+miao.baidu.com
+miniapp-ad.bj.bcebos.com
+# 百度音乐
+log.music.baidu.com
+pups.baidu.com
+ttmsg.qianqian.com
+ttpack.qianqian.com
+ttplayer.qianqian.com
+ad.player.baidu.com
+# 贴吧
+static.pay.baidu.com
+img.taotaosou.cn
+img01.taotaosou.cn
+gameplus-platform.cdn.bcebos.com  # 未知，好像没影响，250202测试
+tieba-ares.cdn.bcebos.com
+sjh.baidu.com
+ns-strategy.cdn.bcebos.com
+fc1tn.baidu.com
+# 0.0.0.0 bj.bcebos.com  酷友反馈误杀理想汽车APP驻车照片。
+fc-image.cdn.bcebos.com
+fc2tn.baidu.com
+fc4tn.baidu.com
+fc5tn.baidu.com
+# 百度视频
+nsclickvideo.baidu.com
+pc.videoclick.baidu.com
+sestat.baidu.com
+stat.v.baidu.com
+videopush.baidu.com
+wisepush.video.baidu.com
+# 百度知道
+stat.zhidahao.baidu.com
+tongji.zhidao.baidu.com
+# 百度安全、杀毒
+anquan.baidu.com
+antivirus.baidu.com
+dl-vip.bav.baidu.com
+dl2.bav.baidu.com
+download.sd.baidu.com
+w.x.baidu.com
+# 吧/百度浏览器
+banlv.baidu.com
+bar.baidu.com
+dl.client.baidu.com
+dzl.baidu.com
+j.br.baidu.com
+toolbar.baidu.com
+# baidu-soft/cleaner
+cleaner.baidu.com
+dl-vip.pcfaster.baidu.co.th
+# baidu-soft/down
+rj.baidu.com
+dlsw.br.baidu.com
+# baidu-soft/hao123
+update.123juzi.net
+# 百度网盘
+issuecdn.baidupcs.com
+update.pan.baidu.com
+update.pan.n.shifen.com
+# 百度智能云
+aod-image-material.cdn.bcebos.com
+dsp-idea.cdn.bcebos.com
+edu-ad-test-cdn.cdn.bcebos.com
+mobads-pre-config.bj.bcebos.com
+mobads-pre-config.cdn.bcebos.com
+pmp-ad.cdn.bcebos.com
+fc-feed.cdn.bcebos.com
+internal-amis-res.cdn.bcebos.com
+pn-cover.cdn.bcebos.com
+rmblive.cdn.bcebos.com
+search-operate.cdn.bcebos.com
+render-server.cdn.bcebos.com
+# 度小满(金融)
+www.dxmpay.com
+www.baifubao.com
+datasink.dxmpay.com
+app.duxiaoman.com
+datasink.paydxm.com
+www.paydxm.com
+bi-sensors.duxiaoman.com
+wap.duxiaoman.com
+app.duxiaomanfintech.com
+# 隐私分析上报(GitHub扒)
+crab.baidu.com
+dxp.baidu.com
+hm.baidu.com
+nsclick.baidu.com
+pos.baidu.com
+sp1.baidu.com
+gsp1.baidu.com
+usp1.baidu.com
+wn.pos.baidu.com
+cpro.baidustatic.com
+# 网易系广告
+analytics.126.net
+stat.ws.126.net
+analytics.163.com
+crash.163.com
+g.163.com
+iad.g.163.com
+temp.163.com
+shark-tracer.netease.com
+adgeo.163.com
+crashlytics.163.com
+count.mail.163.com
+r.mail.163.com
+ir.mail.163.com
+irpmt.mail.163.com
+rec.g.163.com
+g.163.com
+g1.163.com
+analytics.ws.126.net
+android.push.126.net
+img1.126.net
+img2.126.net
+m.analytics.126.net
+mimg.126.net
+news.push.126.net
+haitaoad.nosdn.127.net
+statis.push.netease.com
+wr.da.netease.com
+pg-ad-b1.ws.126.net
+pg-ad-b2.ws.126.net
+advert.lx.netease.com
+e-p4p.163.com
+n.3g.163.com
+adgeo.163.com
+popme.163.com
+bobo.163.com
+fa.163.com
+gb.corp.163.com
+wanproxy.127.net
+ir-sdk.dun.163.com
+httpdns.yunxindns.com
+gad.netease.com  # 网易游戏广告？从网页抓来测试，网页也没见广告。
+httpdns-sdk.n.netease.com
+httpdns.n.netease.com
+nstool.netease.com
+lbs.netease.im
+# 网易阅读
+push.yuedu.163.com
+analytics.hz.netease.com
+mr.da.netease.com
+pr.da.netease.com
+rd.da.netease.com
+# 新浪
+ads.sina.com
+log.sina.cn
+wbapp.mobile.sina.cn
+sax.sina.cn
+adbox.sina.com.cn
+beacon.sina.com.cn
+emarketing.sina.com.cn
+sbeacon.sina.com.cn
+newspush.sinajs.cn
+click.uve.mobile.sina.cn
+cm.dmp.sina.cn
+sdkclick.mobile.sina.cn
+u1.img.mobile.sina.cn
+wapwbclick.mobile.sina.cn
+wbapp.mobile.sina.cn
+wbpctips.mobile.sina.cn
+rs.sinajs.cn
+adm.leju.sina.com.cn
+d00.sina.com.cn
+d0.sina.com.cn
+d1.sina.com.cn
+d2.sina.com.cn
+d3.sina.com.cn
+d4.sina.com.cn
+d5.sina.com.cn
+d6.sina.com.cn
+d7.sina.com.cn
+d8.sina.com.cn
+d9.sina.com.cn
+img.adbox.sina.com.cn
+img.amp.ad.sina.com.cn
+interest.mix.sina.com.cn
+log.mix.sina.com.cn
+m.beacon.sina.com.cn
+mg.games.sina.com.cn
+pfp.sina.com.cn
+rm.sina.com.cn
+staticadm.leju.sina.com.cn
+woocall.sina.com.cn
+ad.us.sinaimg.cn
+mixer.sina.cn  # 网页新浪新闻正文页面的广告(含弹窗)
+l6urqh27.sina.cn  # 网页手机新浪网首页的广告，屏蔽后仍显示空白广告位，起码不显示文字；新闻正文页的部分广告位，上面那条禁用后就没显示广告位了。
+qgnu18wo.sina.cn  # 同上
+9ibbcq2d.sina.cn  # 同上
+# 爱问
+dd.iaskgo.com
+qiye11.ejunshi.net
+# sina-icast
+cast.ra.icast.cn
+rack.ra.icast.cn
+res.icast.cn
+rmtx.ra.icast.cn
+track.ra.icast.cn
+# 微博
+biz.weibo.com
+s.alitui.weibo.com
+zymo.mps.weibo.com
+game.weibo.cn
+gw5.push.mcp.weibo.cn
+m.game.weibo.cn
+# 搜狐搜狗
+i.go.sohu.com
+images.sohu.com
+imp.go.sohu.com
+pv.sohu.com
+s.go.sohu.com
+t.go.sohu.com
+txt.go.sohu.com
+e.changyan.sohu.com
+dspcm.brand.sogou.com
+ht.www.sogou.com
+img.wan.sogou.com
+inte.sogou.com
+irnvf.lu.sogou.com
+m.lu.sogou.com
+p.inte.sogou.com
+p.lu.sogou.com
+pb.sogou.com
+imp.optaim.com
+ad.mail.sohu.com
+adsence.sogou.com
+odin.sohu.com  # 文章网页的广告和推荐阅读
+track.sohu.com
+adv-sv-show.focus.cn
+qpb1.sohu.com  # 手机搜狐网网页主页信息流的广告
+# 搜狐视频
+click.hd.sohu.com.cn
+click2.hd.sohu.com
+count.vrs.sohu.com
+ctr.hd.sohu.com
+p.aty.sohu.com
+pb.hd.sohu.com.cn
+pv.hd.sohu.com
+vg.aty.sohu.com
+vm.aty.sohu.com
+wl.hd.sohu.com
+agn.aty.sohu.com
+upgrade.m.tv.sohu.com  # 更新？
+f.aty.sohu.com
+fmg.aty.sohu.com
+pm.aty.sohu.com
+v.aty.sohu.com
+vstat.my.tv.sohu.com
+vstat.v.blog.sohu.com
+da.mmarket.com
+download.wan.sohu.com
+g.jssdk.net
+m.aty.sohu.com
+mmg.aty.sohu.com
+pg.aty.sohu.com
+# 奇虎360
+ad.huajiao.com
+ad.dev.360.cn
+ad.gamebox.360.cn
+ad.life.360.cn  # 360儿童卫士开屏
+api.so.lianmeng.360.cn
+cm.lianmeng.360.cn
+dev.tg.wan.360.cn
+guess.tf.360.cn
+huid.ad.360.cn
+rd.wan.360.cn
+s.360.cn
+s.lianmeng.360.cn
+s1.stat.lianmeng.360.cn
+service.jiagu.360.cn
+stat.lianmeng.360.cn
+stat.sd.360.cn
+stat.m.360.cn
+stat.tf.360.cn
+tf.360.cn
+e.tf.360.cn
+ini.update.360safe.com
+pdown.stat.360safe.com
+update.360safe.com
+a.appjiagu.com
+api.appjiagu.com
+c.appjiagu.com
+s.appjiagu.com
+top.h.qhimg.com
+p.s.360.cn
+sdk.s.360.cn
+commercial.shouji.360.cn  # 360浏览器开屏广告
+exquisite.shouji.360.cn  # 360清理大师开屏广告
+ad.iot.360.cn  # 360智慧生活
+ad.jia.360.cn  # 360摄像机
+dd.browser.360.cn  # 测试
+tt.browser.360.cn  # 250115测试
+c.sayhi.360.cn
+mobi.360doc.com
+cientch.360doc.cn  # 网页360个人图书馆广告
+# 穿山甲广告★
+p3-ad-sign.byteimg.com  # 抖音部分图片？
+p6-ad-sign.byteimg.com
+p9-ad-sign.byteimg.com
+p3-novel.byteimg.com  # 24.6.17测试
+p6-novel.byteimg.com
+mssdk-bu.bytedance.com
+tnc3-alisc1.bytedance.com
+tnc3-aliec2.bytedance.com
+lf3-cdn-tos.bytegecko.com
+lf6-cdn-tos.bytegecko.com
+lf9-cdn-tos.bytegecko.com
+lf-cdn-tos.bytescm.com
+apps.bytesfield.com
+apps.bytesfield-b.com
+sf6-amtos-cdn.bytesmanager.com
+lf1-cdn-tos.bytegoofy.com
+tr.byteurl.cn  # 新浪新闻用
+dig.bdurl.net  # 头条极速版没网
+mssdk.bytedance.com
+dm.bytedance.com
+tnc3-bjlgy.bytedance.com
+pitaya.bytedance.com
+adbrand.byteimg.com
+ad-sign.byteimg.com
+p1-dpa.byteimg.com
+analytics.bytescm.com
+tosv.boe.byted.org
+tosv.byted.org
+sf-tb-sg.ibytedtos.com
+p1-dy.bytexservice.com
+lf3-orange.byteorge.com
+lf6-orange.byteorge.com
+lf9-orange.byteorge.com
+webcast-open.douyin.com
+webcast5-open-lf.douyin.com
+# 0.0.0.0 p3.douyinpic.com  据说误伤抖音福袋和优惠券，我没号测试
+# 0.0.0.0 p5.douyinpic.com
+# 0.0.0.0 p11.douyinpic.com  抖音头像
+# 0.0.0.0 p26.douyinpic.com  据说误伤抖音福袋和优惠券，我没号测试
+p3-webcast.douyinpic.com
+p6-webcast.douyinpic.com
+p9-webcast.douyinpic.com
+pull-flv-l11.douyincdn.com
+# 0.0.0.0 p3-sign.douyinpic.com 评论图
+# 0.0.0.0 p26-sign.douyinpic.com
+free-lbv3.idouyinvod.com  # 据说误杀网页版视频，测试未发现有影响
+# 番茄小说，v5.3禁用reading.snssdk.com和abtest-ch.snssdk.com和tnc3-alisc1.bytedance.com会全部没网，只放行reading.snssdk.com就好，但是会有领红包弹窗；放行tnc3和abtest禁用reading则初始化没网，过一下才好，但是没红包弹窗
+api3-normal.fqnovel.com
+api3-normal-hl.fqnovel.com
+api3-normal-lf.fqnovel.com
+api3-normal-lq.fqnovel.com
+api5-normal.fqnovel.com
+api5-normal-hl.fqnovel.com
+api5-normal-lf.fqnovel.com
+api5-normal-lq.fqnovel.com
+p6-reading-sign.fqnovelpic.com
+novelapp.fqnovelvod.com
+frontier100-toutiao-lf.fqnovel.com
+mon3-misc.fqnovel.com
+mon3-misc-lf.fqnovel.com
+mon11-misc.fqnovel.com
+mon11-misc-lf.fqnovel.com
+v3-ad.ixigua.com
+dm.isnssdk.com
+h5.isnssdk.com
+hotapi-va.isnssdk.com
+i.isnssdk.com
+i16-tb.isnssdk.com
+ichannel.isnssdk.com
+log.isnssdk.com
+log-tb.isnssdk.com
+mon.isnssdk.com
+open.isnssdk.com
+pangolin16.isnssdk.com
+tnc16-alisg.isnssdk.com
+tnc16-useast1a.isnssdk.com
+snssdk.com
+bds.snssdk.com
+frontier-toutiao.snssdk.com
+i.snssdk.com
+i-hl.snssdk.com
+ib.snssdk.com  # 部分头条系APP没网，比如懂车帝极速版，然而懂车帝的开屏广告又是这条…
+ic.snssdk.com
+ichannel.snssdk.com  # 更新
+ichannel.snssdk.com.bytedns.net
+is.snssdk.com  # 懂车帝首页信息流的部分图文贴点进去没网，放行吧，别的APP又会漏掉大量穿山甲广告
+is-hl.snssdk.com
+gecko-hl.snssdk.com
+gini.snssdk.com
+lf.snssdk.com
+mon.snssdk.com
+mssdk-bu.snssdk.com
+pangolin.snssdk.com
+# 0.0.0.0 reading.snssdk.com  番茄小说v5.3初始化断网
+reading-hl.snssdk.com
+security-hl.snssdk.com
+tnc3-alisc1.snssdk.com
+tnc3-aliec2.snssdk.com
+tnc3-bjlgy.snssdk.com
+ug.snssdk.com
+vas-hl-x.snssdk.com
+vc-brain.snssdk.com
+vc-mirror.snssdk.com
+vcs.snssdk.com  # 并非抖音验证码
+vcs-hl.snssdk.com
+tobapplog.ctobsnssdk.com
+toblog.ctobsnssdk.com
+stream.snssdk.com
+mssdk.snssdk.com
+tbm.snssdk.com
+open.snssdk.com
+abtest-ch.snssdk.com
+analytics.snssdk.com
+extlog.snssdk.com
+gecko-lq.snssdk.com
+# 0.0.0.0 haohuo.snssdk.com 抖音订单？
+ib.snssdk.com.edgekey.net
+isub.snssdk.com
+isub.snssdk.com.bytedns.net
+it.snssdk.com.edgekey.net
+iu.snssdk.com.edgekey.net
+lianmengapi.snssdk.com
+log-hl.snssdk.com
+# 0.0.0.0 log.snssdk.com  新安装的抖音同城、直播没网
+log.snssdk.com.bytedns.net
+mcs.snssdk.com  # 并非抖音验证码
+mercury-sdk.snssdk.com
+open.snssdk.com.bytedns.net
+sdfp.snssdk.com
+smr.snssdk.com
+temai.snssdk.com
+toblog.snssdk.com
+toutiao-frontier.snssdk.com
+verify.snssdk.com  # 并非抖音验证码，据说是网页版抖音验证图片？
+xlog.snssdk.com
+frontier.snssdk.com
+i-lq.snssdk.com
+gecko.snssdk.com
+applog.snssdk.com
+aweme.snssdk.com
+aweme-hl.snssdk.com
+gecko-pangle-hl.snssdk.com
+gecko-pangle-lf.snssdk.com
+gecko-pangle-lq.snssdk.com
+vas-lf-x.snssdk.com
+vcl-brain.snssdk.com
+effect.snssdk.com
+is-lq.snssdk.com
+reading-lq.snssdk.com
+f-cashloan.snssdk.com
+# 0.0.0.0 f-cpay.snssdk.com 抖音月付
+video-cn.snssdk.com
+pangolin16.sgsnssdk.com
+toblog.tobsnssdk.com
+security.snssdk.com
+hotsoon.snssdk.com
+mercury.snssdk.com
+rc.snssdk.com
+rc-boe.snssdk.com
+lf3-common-ckv-tos.pstatp.com
+lf6-common-ckv-tos.pstatp.com
+lf9-common-ckv-tos.pstatp.com
+lf1-ttcdn-tos.pstatp.com
+lf3-ttcdn-tos.pstatp.com
+lf6-ttcdn-tos.pstatp.com
+lf9-ttcdn-tos.pstatp.com
+sf3-ttcdn-tos.pstatp.com
+sf6-ttcdn-tos.pstatp.com
+sf1-scmcdn-tos.pstatp.com
+sf16-static.i18n-pglstatp.com
+sf19-fe-tos-sg.i18n-pglstatp.com
+dm.pstatp.com
+pb3.pstatp.com
+s3a.pstatp.com
+sf1-ttcdn-tos.pstatp.com
+sf1-pitaya-tos.pstatp.com
+sf3-pitaya-tos.pstatp.com
+lf6-dycdn-tos.pstatp.com
+ad.toutiao.com
+adshare.toutiao.com
+dm.toutiao.com
+dm-hl.toutiao.com
+dm-lq.toutiao.com
+dsp.toutiao.com
+mon.toutiao.com
+nativeapp.toutiao.com
+partner.toutiao.com
+open.toutiao.com
+d.toutiao.com
+log3-normal-lq.toutiaoapi.com
+log3-normal.toutiaoapi.com
+mon11-misc-lq.toutiaoapi.com
+mon.toutiaocloud.com
+mon.toutiaocloud.net
+monsetting.toutiao.com
+zlink.toutiao.com
+# 0.0.0.0 api.toutiaoapi.com  今日头条≈没网
+zhanzhang.toutiao.com
+imp-toutiao-data.37.com.cn
+www.pangolin-dsp-toutiao.com
+toutiao.2haha.com
+toutiao.jxnews.com.cn
+ug.pangolin-dsp-toutiao.com  # 七猫阅读界面底栏横幅
+api-access.pangolin-sdk-toutiao.com
+api-access.pangolin-sdk-toutiao1.com
+ecom.pangolin-sdk-toutiao.com
+ether-pack.pangolin-sdk-toutiao.com
+gromore.pangolin-sdk-toutiao.com
+novel.pangolin-sdk-toutiao.com
+log-api.pangolin-sdk-toutiao.com
+access.pangolin-sdk-toutiao-b.com
+api-access.pangolin-sdk-toutiao-b.com
+log-api.pangolin-sdk-toutiao-b.com
+lf3-sf-be-pack-sign.pglstatp-toutiao.com
+lf6-sf-be-pack-sign.pglstatp-toutiao.com
+lf9-sf-be-pack-sign.pglstatp-toutiao.com
+lf26-sf-be-pack-sign.pglstatp-toutiao.com
+s3-fe-scm.pglstatp-toutiao.com
+p3-be-pack-sign.pglstatp-toutiao.com
+p6-be-pack-sign.pglstatp-toutiao.com
+p9-be-pack-sign.pglstatp-toutiao.com
+p26-be-pack-sign.pglstatp-toutiao.com
+sf3-be-pack.pglstatp-toutiao.com
+sf1-be-pack.pglstatp-toutiao.com
+sfl-fe-tos.pglstatp-toutiao.com
+sf6-be-pack.pglstatp-toutiao.com
+sf3-fe-tos.pglstatp-toutiao.com
+lf1-ad-union-sdk.pglstatp-toutiao.com
+lf3-ad-union-sdk.pglstatp-toutiao.com
+lf6-ad-union-sdk.pglstatp-toutiao.com
+lf9-ad-union-sdk.pglstatp-toutiao.com
+lf26-ad-union-sdk.pglstatp-toutiao.com
+v1-be-pack.pglstatp-toutiao.com
+v3-be-pack.pglstatp-toutiao.com
+v6-be-pack.pglstatp-toutiao.com
+v9-be-pack.pglstatp-toutiao.com
+v26-be-pack.pglstatp-toutiao.com
+p1-be-endcard.pglstatp-toutiao.com
+sf1-fe-pack.pglstatp-toutiao.com
+sf1-fe-tos.pglstatp-toutiao.com
+sf6-fe-pack.pglstatp-toutiao.com
+v1-fe-pack.pglstatp-toutiao.com
+v3-fe-pack.pglstatp-toutiao.com
+v6-fe-pack.pglstatp-toutiao.com
+abtest3-misc.zijieapi.com
+abtest3-misc-hl.zijieapi.com
+abtest3-misc-lf.zijieapi.com
+abtest3-misc-lq.zijieapi.com
+abtest5-misc.zijieapi.com
+abtest5-misc-hl.zijieapi.com
+abtest5-misc-lq.zijieapi.com
+ad.zijieapi.com
+ads.zijieapi.com
+ads5-normal.zijieapi.com
+ads3-normal-hl.zijieapi.com
+ads3-normal-lf.zijieapi.com
+ads3-normal-lq.zijieapi.com
+ads3-normal.zijieapi.com
+ads5-normal-hl.zijieapi.com
+ads5-normal-lf.zijieapi.com
+ads5-normal-lq.zijieapi.com
+applog.zijieapi.com
+bsync3-normal.zijieapi.com
+bsync3-normal-hl.zijieapi.com
+bsync3-normal-lf.zijieapi.com
+bsync3-normal-lq.zijieapi.com
+bsync5-normal.zijieapi.com
+bsync5-normal-hl.zijieapi.com
+bsync5-normal-lf.zijieapi.com
+bsync5-normal-lq.zijieapi.com
+feedback-c.zijieapi.com
+gecko.zijieapi.com
+gecko3.zijieapi.com
+gecko3-hl.zijieapi.com
+gecko3-lf.zijieapi.com
+gecko3-lq.zijieapi.com
+gecko5.zijieapi.com
+gecko5-hl.zijieapi.com
+gecko5-lf.zijieapi.com
+gecko5-lq.zijieapi.com
+log.zijieapi.com
+ma.zijieapi.com
+ma3-normal-lf.zijieapi.com
+ma5-normal-lq.zijieapi.com
+mcs.zijieapi.com
+minigame.zijieapi.com
+minigame3-normal-hl.zijieapi.com
+minigame3-normal.zijieapi.com
+minigame5-normal-hl.zijieapi.com
+minigame5-normal-lq.zijieapi.com
+minigame5-normal.zijieapi.com
+mon.zijieapi.com
+mon11-misc-lf.zijieapi.com
+mssdk.zijieapi.com
+mssdk3-normal-hl.zijieapi.com
+mssdk3-normal-lf.zijieapi.com
+mssdk3-normal-lq.zijieapi.com
+mssdk3-normal.zijieapi.com
+mssdk5-normal-lf.zijieapi.com
+mssdk5-normal-lq.zijieapi.com
+mssdk5-normal.zijieapi.com
+neptune-platform.zijieapi.com
+polaris.zijieapi.com
+polaris3-normal-hl.zijieapi.com
+polaris3-normal-lq.zijieapi.com
+polaris5-normal-lf.zijieapi.com
+polaris5-normal-lq.zijieapi.com
+saveu5-normal-lf.zijieapi.com
+saveu5-normal-lq.zijieapi.com
+starkgame.zijieapi.com
+timon.zijieapi.com
+tnc0-aliec2.zijieapi.com
+tnc0-bjlgy.zijieapi.com
+tnc1-bjlgy.zijieapi.com
+tnc11-aliec2.zijieapi.com  # 有说是番茄小说阅读评论，也不见影响。
+tnc11-alisc1.zijieapi.com
+tnc11-bjlgy.zijieapi.com
+tnc2-bjlgy.zijieapi.com
+tnc3-aliec2.zijieapi.com
+tnc3-alisc1.zijieapi.com
+tnc3-bjlgy.zijieapi.com
+tnc4-bjlgy.zijieapi.com
+tnc5-bjlgy.zijieapi.com
+vcs.zijieapi.com
+dig.zjurl.cn
+# 海外字节系广告
+tnc16-alisg.byteoversea.com
+tnc16-useast1a.byteoversea.com
+ssdk-sg.pangle.io
+# TopOn广告(酷安用，不然信息流漏广告)
+app.takuad.com
+img.toponad.com
+mores.toponad.com
+app.toponad.com
+aa.toponad.com
+pkgcn.toponad.com
+pkg.toponad.com
+openapi.toponad.com
+www.toponad.com
+tt.toponad.com
+dd.toponad.com
+# 快手广告
+p1.adkwai.com
+p2.adkwai.com
+p3.adkwai.com
+p4.adkwai.com
+p5.adkwai.com
+p6.adkwai.com
+p1-ad.adkwai.com
+p2-ad.adkwai.com
+p3-ad.adkwai.com
+p4-ad.adkwai.com
+p5-ad.adkwai.com
+p6-ad.adkwai.com
+p66-ad.adkwai.com
+p1-ff.adkwai.com
+p1-lm.adkwai.com
+p2-lm.adkwai.com
+p3-lm.adkwai.com
+p4-lm.adkwai.com
+p5-lm.adkwai.com
+p6-lm.adkwai.com
+p1-yx.adkwai.com
+p2-yx.adkwai.com
+p3-yx.adkwai.com
+p4-yx.adkwai.com
+p5-yx.adkwai.com
+p6-yx.adkwai.com
+open.e.kuaishou.com
+open.e.kuaishou.cn
+adukwai.com
+p1-jx.adukwai.com
+p1-lm.adukwai.com
+p2-jx.adukwai.com
+p2-lm.adukwai.com
+v1-lm.adukwai.com
+v2-lm.adukwai.com
+v4-lm.adukwai.com
+p1-pp.adukwai.com
+p1-ad.adukwai.com
+p2-ad.adukwai.com
+p3-ad.adukwai.com
+p4-ad.adukwai.com
+p5-ad.adukwai.com
+ali-ad.a.yximgs.com
+tx-ad.a.yximgs.com
+p2.a.yximgs.com
+v2-ad.video.yximgs.com
+w1.kskwai.com
+w2.kskwai.com
+ad.partner.gifshow.com
+gdfp.gifshow.com
+log-sdk.gifshow.com
+zt.gifshow.com
+ulog-sdk.gifshow.com
+gdfpsec.gifshow.com  # ↓从A站
+push.gifshow.com
+sec-cdn.gifshow.com
+slink.gifshow.com
+gdfp.ksapisrv.com
+slink.ksapisrv.com
+img-w.kuaishou.com
+csc.m.kuaishou.com
+sixinpic.kuaishou.com
+api.kuaishouzt.com
+# 0.0.0.0 ali2.a.yximgs.com  快手评论区图片
+bd.a.yximgs.com  # ↑A站
+# 0.0.0.0 tx2.a.yximgs.com  据说是少部分评论图
+httpdns.kwd.inkuai.com
+open.kwaizt.com
+open.kuaishouzt.com
+api.e.kuaishou.com  # 快影开屏
+api2.e.kuaishou.com
+static.yximgs.com
+js-ad.a.yximgs.com
+adtrack.e.kuaishou.com
+api.kwaizt.com
+w1.kskwai.com  # ↓cdn
+w2.kskwai.com
+w1.gskwai.com
+w2.gskwai.com  # ↑CDN
+promotion-partner.kuaishou.com
+apidns.kwd.inkuai.com
+kuaishou.httpdns.pro
+hdns.ksyun.com
+tx.a.kspkg.com  # 250326测试
+# UC
+applog.uc.cn
+gj.applog.uc.cn
+applogios.uc.cn
+gjapplog.uc.cn
+mparticle.uc.cn
+track.uc.cn
+gj.track.uc.cn
+partner.uc.cn
+woodpecker.uc.cn
+adtrack.ucweb.com
+gjtrack.ucweb.com
+insight.ucweb.com
+adn.insight.ucweb.com
+logserver.insight.ucweb.com
+sdkupgrade.insight.ucweb.com
+puds.ucweb.com
+uc.ucweb.com
+click.union.ucweb.com
+adashx.ut.uc.cn
+s-adashx.ut.uc.cn
+image-ad.sm.cn
+openacs4uc.m.taobao.com
+openjmacs4uc.m.taobao.com
+adslot.uc.cn
+dispatcher.upmc.uc.cn
+safe.ucweb.com
+ucsec.ucweb.com
+ucsec1.ucweb.com
+vs6.gzct.uc.ucweb.com
+u.uc123.com
+u.ucfly.com
+huichuan.sm.cn
+huichuan-mc.sm.cn
+allnews.uodoo.com
+m.uczzd.cn
+iflow.uczzd.cn
+iflow.uczzd.com
+iflow.uczzd.com.cn
+iflow.uczzd.net
+image.zzd.sm.cn
+api.open.uc.cn
+hk.napi.ucweb.com
+sea.napi.ucweb.com
+up1.tj.u2.ucweb.com
+up4.ucweb.com
+wap3.ucweb.com
+utp-dmp.ucweb.com
+api.mp.uc.cn
+puds.test.uae.uc.cn
+wmedia-track.uc.cn
+log.cs.pp.cn
+server.m.pp.cn
+kwurl.ucweb.com
+rescn.u3.ucweb.com
+uc9.ucweb.com
+ucus.ucweb.com
+vs2.gzcu.u3.ucweb.com
+m.uc123.com
+alissl.ucdl.pp.uc.cn
+hao.uc.cn
+patriot.cs.pp.cn
+utp.ucweb.com
+vs19.gzcu.u3.ucweb.com
+vs7.gzcu.u3.ucweb.com
+vs8.gzct.u3.ucweb.com
+vs8.gzcu.u3.ucweb.com
+sugs.m.sm.cn
+# 三星
+insights.samsung.com
+ad.samsungadhub.com
+samsungads.com
+ads.samsungads.com
+config.samsungads.com
+# 苹果
+api-adservices.apple.com
+ca.iadsdk.apple.com
+cf.iadsdk.apple.com
+iadsdk.apple.com
+advertising.apple.com
+searchads.apple.com
+# 荣耀
+ads-drcn.platform.hihonorcloud.com
+metrics-ad-drcn.dt.hihonorcloud.com
+installer-drcn.hispace.hihonorcloud.com
+# 魅族
+api-game.meizu.com
+dw-reader.meizu.com
+reader-res.mzres.com
+# 0.0.0.0 upush.meizu.com  系统更新？
+api-flow.flyme.cn
+bro.flyme.cn
+es-res.flyme.cn
+madx.flyme.cn
+ssp-res.flyme.cn
+t-e.flyme.cn
+t-flow.flyme.cn
+aider-res.meizu.com
+api-flow.meizu.com
+api-push.meizu.com
+cal.meizu.com
+ebook-res.meizu.com
+ebook.res.meizu.com
+game-res.meizu.com
+game.res.meizu.com
+infocenter.meizu.com
+open-iflow.meizu.com
+openapi-news.meizu.com
+push.res.meizu.com
+reader.meizu.com  # 新闻资讯
+reader.res.meizu.com
+safe.res.meizu.com
+tongji-res1.meizu.com
+tongji.meizu.com
+umid.orion.meizu.com
+upush.res.meizu.com
+uxip.meizu.com
+mz-api.smzdm.com
+# OPPO
+adx.ads.oppomobile.com
+bdapi.ads.oppomobile.com
+data.ads.oppomobile.com
+data-id.ads.oppomobile.com
+adsfs.oppomobile.com
+# OV真我Realme一加
+ads.heytapmobi.com
+adx.ads.heytapmobi.com  # 据说是浏览器下载推荐
+adsfs.heytapimage.com
+adsfs-sdkconfig.heytapimage.com
+mdp-usertrace-cn.heytapmobi.com
+uapi.ads.heytapmobi.com
+b1-data.ads.heytapmobi.com
+b2-data.ads.heytapmobi.com
+stg-data.ads.heytapmobi.com  # 安装界面广告
+sms.ads.heytapmobi.com  # 短信和拨号广告
+icosa.coloros.com  # 据说是Realme应用增强服务_安装软件后上传包名
+ibrowser.feeds.heytapmobi.com  # 天气_精彩推荐
+# VIVO
+adlog.vivo.com.cn
+adreq.vivo.com.cn
+ads-marketing-vivofs.vivo.com.cn
+adsdk.vivo.com.cn
+adxlog.vivo.com.cn
+dsplog-adnet.vivo.com.cn
+monitor-stsdk.vivo.com.cn
+onrt-stsdk.vivo.com.cn
+ort-stsdk.vivo.com.cn
+pnrt-stsdk.vivo.com.cn
+prt-stsdk.vivo.com.cn
+stnetsdk.vivo.com.cn
+stsdk.vivo.com.cn
+bronrt.stsdk.vivo.com.cn
+brort.stsdk.vivo.com.cn
+brpnrt.stsdk.vivo.com.cn
+brprt.stsdk.vivo.com.cn
+onrt.stsdk.vivo.com.cn
+ort.stsdk.vivo.com.cn
+pnrt.stsdk.vivo.com.cn
+prt.stsdk.vivo.com.cn
+adxlog-adnet.vivo.com.cn
+tracking-adnet.vivo.com.cn
+vcardsdkservice.vivo.com.cn
+open-ad.vivo.com.cn
+# VIVO国际
+asia-analyzer-appstore.vivoglobal.com
+asia-comonrt-stsdk.vivoglobal.com
+asia-comort-stsdk.vivoglobal.com
+asia-ex-adlog.vivoglobal.com
+asia-exstsdk.vivoglobal.com
+asia-monitor-stsdk.vivoglobal.com
+asia-onrt-stsdk.vivoglobal.com
+asia-ort-stsdk.vivoglobal.com
+asia-pnrt-stsdk.vivoglobal.com
+asia-prt-stsdk.vivoglobal.com
+asia-stsdk.vivoglobal.com
+onrt-stsdk.vivoglobal.com
+stsdk.vivoglobal.com
+onrt.stsdk.vivoglobal.com
+tr-romsp-unifyconfig.vivoglobal.com
+tr-st-sl.vivoglobal.com
+tr-vcode-od.vivoglobal.com
+# 小米广告
+ad.mi.com
+ad.xiaomi.com
+ad1.xiaomi.com
+a.stat.xiaomi.com
+api.ad.xiaomi.com
+cdn.ad.xiaomi.com
+diagnosis.ad.xiaomi.com
+e.ad.xiaomi.com
+log.ad.xiaomi.com
+track.ad.xiaomi.com
+m.track.ad.xiaomi.com
+zeus.ad.xiaomi.com
+sdkconfig.ad.india.xiaomi.com
+api.ad.intl.xiaomi.com
+diagnosis.ad.intl.xiaomi.com
+sdkconfig.ad.intl.xiaomi.com
+zeus.ad.intl.xiaomi.com
+ximad.com
+mjp-analytics.ximad.com
+opt.ximad.com
+new.api.ad.xiaomi.com
+sdkconfig.ad.xiaomi.com
+test.ad.xiaomi.com
+test.e.ad.xiaomi.com
+test.new.api.ad.xiaomi.com
+adinfo.ra1.xlmc.sec.miui.com
+tracking.miui.com
+om.tracking.miui.com
+analytics.miui.com
+analytics.db.miui.com
+# 系统应用更新弹窗，比如下载管理、相册
+api.developer.xiaomi.com
+# 软件安装验证相关
+api.installer.xiaomi.com
+api-installer.pt.xiaomi.com
+preview-api.installer.xiaomi.com
+test-api-installer.pt.xiaomi.com
+# 安全相关，每次装完APP都会连，可能有上报
+adv.sec.miui.com
+api.sec.miui.com
+auth.be.sec.miui.com
+flash.sec.miui.com
+# 安全相关，下载完文件触发
+data.sec.miui.com
+api.tw06.xlmc.sec.miui.com
+# 小米云扫描组件(搬运)
+log.avlyun.sec.intl.miui.com
+update.avlyun.sec.miui.com
+ixav-cse.avlyun.com
+logupdate.avlyun.sec.miui.com
+miui-fxcse.avlyun.com
+sdkconf.avlyun.com
+sdkconf.avlyun.com
+miav-cse.avlyun.com
+miav-cse.avlyun.com
+# 禁用后将无法云扫描病毒
+# 屏蔽系统更新
+# 0.0.0.0 update.miui.com
+# 小米rom下载加速（备用IP香港163.181.35.44，182.239.104.89，台北47.246.36.217，47.246.37.220）
+# 快应用
+qr.quickapp.cn
+qrcdn.quickapp.cn
+statres.quickapp.cn
+cnbj1.fds.api.xiaomi.co  # 小米遥控器底部横幅
+api.jr.mi.com  # 小米钱包净化
+sug.browser.miui.com  # 小米浏览器搜索提示，上方的应用推广和下面的联想词一起干没
+api.comm.miui.com  # 小米日历广告
+# 小米天气主页广告、央视天气预报和适宜XX卡片
+# 0.0.0.0  wtradv.market.xiaomi.com
+# 反诈
+gjfzpt.cn
+fzapp.gjfzpt.cn
+fzapph5.gjfzpt.cn
+fzapp-test-tyy.gjfzpt.cn
+oss.gjfzpt.cn
+fzapp.chanct.cn
+fzapph5.chanct.cn
+frappe.chanct.cn
+oss.chanct.cn
+sz.gafz.chanct.cn
+tingfeng.chanct.cn
+# 政府平台(搬运)
+www.mps.gov.cn
+mps.gov.c
+m.mps.gov.cn
+ywtbapi.mps.gov.cn
+beian.mps.gov.cn
+mail.mps.gov.cn
+ywtb.mps.gov.cn
+ngo.mps.gov.cn
+dbjb.mps.gov.cn
+ispl.mps.gov.cn
+ecidewc.mps.gov.cn
+cyberpolice.mps.gov.cn
+app.mps.gov.cn
+zlbj.mps.gov.cn
+zwfw.mps.gov.cn
+ecidcwc.mps.gov.cn
+miit.gov.cn
+beian.miit.gov.cn
+# 微软广告
+bingads.microsoft.com
+advertise.bingads.microsoft.com
+www.bingads.microsoft.com
+rad.microsoft.com
+ads1.msads.net
+ads2.msads.net
+global.msads.net
+a.global.msads.net
+rad.live.com
+ads1.msn.com
+a.ads1.msn.com
+a.ads2.msn.com
+b.ads1.msn.com
+ads.eu.msn.com
+ads.msn.com
+ads2.msn.com
+adsyndication.msn.com
+ads.ninemsn.com.au
+mobileads.msn.com
+rmads.eu.msn.com
+rmads.msn.com
+# 谷歌广告
+lh3.googleadsserving.cn
+google-analytics.com
+ssl.google-analytics.com
+www.google-analytics.com
+ads.google.com
+adservice.google.com
+googleadservices.com
+pagead2.googleadservices.com
+www.googleadservices.com
+static.googleadsserving.cn
+googlesyndication.com
+ade.googlesyndication.com
+pagead2.googlesyndication.com
+pagead-googlehosted.l.google.com
+partner.googleadservices.com
+tpc.googlesyndication.com
+displayads-formats.googleusercontent.com
+www.googletagmanager.com
+www.googletagservices.com
+ad.googleanalysis.mobi
+stat.googleanalysis.mobi
+afs.googlesyndication.com
+video-ad-stats.googlesyndication.com
+googleadapis.google.com
+googleadapis.l.google.com
+adsense.google.com
+adservice.google.com.ar
+adservice.google.com.au
+adservice.google.com.br
+adservice.google.ca
+adservice.google.com.co
+adservice.google.de
+adservice.google.dk
+adservice.google.fr
+adservice.google.com.gt
+adservice.google.co.in
+adservice.google.co.kr
+adservice.google.com.mx
+adservice.google.nl
+adservice.google.no
+adservice.google.com.pe
+adservice.google.com.ph
+adservice.google.com.pk
+adservice.google.pl
+adservice.google.ru
+adservice.google.com.tr
+adservice.google.com.tw
+adservice.google.co.uk
+adservice.google.vg
+adservice.google.com.vn
+adservice.google.co.za
+ogads-pa.clients6.google.com
+ogads-pa.googleapis.com
+firebase-settings.crashlytics.com
+firebaselogging.googleapis.com
+firebaselogging-pa.googleapis.com
+myphonenumbers-pa.googleapis.com
+doubleclick.com
+www.doubleclick.com
+ad.doubleclick.com
+g.doubleclick.com
+adclick.g.doublecklick.net
+googleads.g.doubleclick.com
+doubleclick.net
+accounts.doubleclick.net
+ad.doubleclick.net
+ad-emea.doubleclick.net
+ff.doubleclick.net
+fls.doubleclick.net
+5290727.fls.doubleclick.net
+8168974.fls.doubleclick.net
+8397396.fls.doubleclick.net
+g.doubleclick.net
+adx.g.doubleclick.net
+bid.g.doubleclick.net
+cm.g.doubleclick.net
+googleads.g.doubleclick.net
+googleads4.g.doubleclick.net
+pagead.l.doubleclick.net
+pagead46.l.doubleclick.net
+partnerad.l.doubleclick.net
+pubads.g.doubleclick.net
+securepubads.g.doubleclick.net
+stats.g.doubleclick.net
+survey.g.doubleclick.net
+dart.l.doubleclick.net
+m.doubleclick.net
+s0.doubleclick.net
+static.doubleclick.net
+# 油管推脸书P站
+ads.youtube.com
+fcmatch.youtube.com
+an.facebook.com
+pixel.facebook.com
+ads.twitter.com
+ads.x.com
+ads-api.x.com
+ads-api.twitter.com
+ads-bidder-api.twitter.com
+static.ads-twitter.com
+analytics.twitter.com
+ads-twitter.com
+pixon.ads-pixiv.net
+open-pixon.ads-pixiv.net
+d.pixiv.org
+sh.adingo.jp  # ↓P站
+dex.advg.jp
+y.one.impact-ad.jp
+js.mtburn.com
+spcnv.i-mobile.co.jp
+spdmg-backend.i-mobile.co.jp
+spdmg.i-mobile.co.jp
+assets.gunosy.com  # ↑P站
+staticxx.facebook.com
+dc.ads.linkedin.com  # 领英
+syndication.twitter.com
+tapi.apkpure.net  # APKpure广告图
+t.apkpure.net
+# Spotify(音频广告去不掉)
+ads.spotify.com
+adstudio-assets.scdn.co
+audio-ad.spotify.com
+enduser.adsrvr.org
+# SnapChat
+snapads.com
+adserver.snapads.com
+usc.adserver.snapads.com
+adserver.shadow.snapads.com
+study.snapads.com
+ads.snapchat.com
+adsapi.snapchat.com
+tr.snapchat.com
+tr6.snapchat.com
+# 墙外的广告商
+# 乱七八糟
+ad.tagtoo.co
+trace.popin.cc
+analytics.jbravo.co
+rtb.adentifi.com
+sync.adkernel.com
+px.ads.linkedin.com
+ads.pubmatic.com
+ssbsync.smartadserver.com
+pixel.tapad.com
+ad.turn.com
+ads.yieldmo.com
+c1.adform.net
+match.adsrvr.org
+sdk-api-v1.singular.net
+cm.mgid.com
+assets.iredwhale.com
+dsp.iredwhale.com
+rtb.iredwhale.com
+eb2.3lift.com
+visitor.omnitagjs.com
+sync.outbrain.com
+trace.mediago.io
+hbx.media.net
+ws.tapjoyads.com
+appinfo.adop.cc
+bidmad.adop.cc
+cdn.admixer.net
+pixel.adsafeprotected.com
+static.adsafeprotected.com
+sdk.iad-01.braze.com
+ads.stickyadstv.com
+rt.ad-score.com
+cm.adgrx.com
+dsp-cookie.adfarm1.adition.com
+ads.betweendigital.com
+rtb-csync.smartadserver.com
+cm.adform.net
+acdn.adnxs-simple.com
+ib.adnxs-simple.com  # Outlook顶部的广告？
+ad.mail.ru
+api.popin.cc
+ads.aralego.com
+au.breaktime.com.tw
+s0.2mdn.net
+dis.criteo.com
+ssp-sync.criteo.com
+ad.holmesmind.com
+c.holmesmind.com
+assets.mailerlite.com  # 邮箱营销
+sb.scorecardresearch.com
+yads.c.yimg.jp
+ad2.apx.appier.net
+au.adhacker.online
+power.adhacker.online
+breaktime.tw  # 富盈数据
+a.breaktime.com.tw
+alliance.breaktime.com.tw
+powerads.breaktime.com.tw
+elads.kocpc.com.tw
+a.teads.tv
+s.peplle.cn
+u3y8v8u4.aucdn.net  # 弹出式黄片广告
+pttptt.cc  # 网页大片黄图广告
+ads.adfox.ru
+cdn1.inner-active.mobi
+cdn2.inner-active.mobi
+tes.foisonad.com
+t-odx.op-mobile.opera.com
+trackes.liftyad.xyz
+gdl.youngle.tech
+pok.mintegral.net
+gdl.news-cdn.site
+ad-delivery.net
+# Adobe
+campaign.adobe.com
+mcd-mkt-prod31-lb.campaign.adobe.com
+pandoramedia-mkt-prod1-t.campaign.adobe.com
+wdpro-mkt-prod2-lb.campaign.adobe.com
+geo.adobe.com
+adtag.primetime.adobe.com
+sstats.adobe.com
+# 91porn.com
+fans.bestvogue.com
+bcp.crwdcntrl.net
+# 亚马逊广告
+amazon-adsystem.com
+aax.amazon-adsystem.com
+aax-eu.amazon-adsystem.com
+aax-eu-retail-direct.amazon-adsystem.com
+aax-fe.amazon-adsystem.com
+aax-fe-pek.amazon-adsystem.com
+aax-fe-sin.amazon-adsystem.com
+aax-us.amazon-adsystem.com
+aax-us-east.amazon-adsystem.com
+c.amazon-adsystem.com
+cdn-a.amazon-adsystem.com
+fls-eu.amazon-adsystem.com
+fls-fe.amazon-adsystem.com
+fls-na.amazon-adsystem.com
+ir-na.amazon-adsystem.com
+mads.amazon-adsystem.com
+s.amazon-adsystem.com
+ws-eu.amazon-adsystem.com
+ws-na.amazon-adsystem.com
+z-eu.amazon-adsystem.com
+z-na.amazon-adsystem.com
+# 亚马逊
+aan.amazon.com
+aax-us-east-retail-direct.amazon.com
+fls-na.amazon.com
+ads-api-new-2052271615.ap-northeast-1.elb.amazonaws.com
+adserver-1277986481.ap-northeast-1.elb.amazonaws.com
+ad-server-lb-294150285.ap-southeast-1.elb.amazonaws.com
+ads-816899299.ap-southeast-1.elb.amazonaws.com
+rw-yieldmo-com-1673518954.ap-southeast-1.elb.amazonaws.com
+adservingvpc-1239633584.eu-west-1.elb.amazonaws.com
+beaconserver-ce-vpc0-1537565064.eu-west-1.elb.amazonaws.com
+prod-dem-collector-elb-611025824.eu-west-1.elb.amazonaws.com
+adktracking-1671721947.eu-west-3.elb.amazonaws.com
+adn-tktracking-virginia-621472495.us-east-1.elb.amazonaws.com
+adserver-2084671375.us-east-1.elb.amazonaws.com
+adserver-vpc-alb-0-2072243822.us-east-1.elb.amazonaws.com
+adserver-vpc-alb-1-2048135467.us-east-1.elb.amazonaws.com
+adserver-vpc-alb-2-1898430250.us-east-1.elb.amazonaws.com
+adsk-pnxproxy-prd-1753980530.us-east-1.elb.amazonaws.com
+audience-164723144.us-east-1.elb.amazonaws.com
+log-collectors-73517960.us-east-1.elb.amazonaws.com
+lynx-prod-beacon-alb-498367235.us-east-1.elb.amazonaws.com
+nova-collector-1192479543.us-east-1.elb.amazonaws.com
+prod-ash-beacon-1960876484.us-east-1.elb.amazonaws.com
+rpc-tapjoy-com-lb-1378811527.us-east-1.elb.amazonaws.com
+tapjoy-com-lb-vpc-332546193.us-east-1.elb.amazonaws.com
+tracking-1611167402.us-east-1.elb.amazonaws.com
+wildcard-ads-new-1653986885.us-east-1.elb.amazonaws.com
+ads-b-480313385.us-west-1.elb.amazonaws.com
+ads-c-1854119718.us-west-1.elb.amazonaws.com
+adserver-vpc-alb-0-2075095491.us-west-2.elb.amazonaws.com
+adserver-vpc-alb-1-725730730.us-west-2.elb.amazonaws.com
+adserver-vpc-alb-2-553366957.us-west-2.elb.amazonaws.com
+adserver-vpc-alb-3-578630024.us-west-2.elb.amazonaws.com
+beaconserver-ce-vpc0-1909323404.us-west-2.elb.amazonaws.com
+dco-jads-727222375.us-west-2.elb.amazonaws.com
+prod-pdx-beacon-1406086907.us-west-2.elb.amazonaws.com
+rw-yieldmo-com-1857737650.us-west-2.elb.amazonaws.com
+wildcard-ads-448740142.us-west-2.elb.amazonaws.com
+huq-query-loggers-europe-west1-32ef7f4bbf54ce27.elb.eu-west-1.amazonaws.com
+admarvel.s3.amazonaws.com
+advancelocal-adapter-image-uploads.s3.amazonaws.com
+ignifyecom.s3.amazonaws.com
+incoming-data-sense360.s3.amazonaws.com
+nativead.s3.amazonaws.com
+surveygizmobeacon.s3.amazonaws.com
+later-analytics-reports.s3-accelerate.amazonaws.com
+bin5y4muil.execute-api.us-east-1.amazonaws.com
+mobileanalytics.us-east-1.amazonaws.com
+huq-query-loggers-california-3cec807da3e9dc0d.elb.us-west-1.amazonaws.com
+ad-host-backup-america.s3.us-west-1.amazonaws.com
+ad-host-backup-asia.s3.ap-southeast-1.amazonaws.com
+ad-host-backup-europe.s3.eu-central-1.amazonaws.com
+# Unity3D游戏引擎
+cdp.cloud.unity3d.com
+perf-events.cloud.unity3d.com
+config.uca.cloud.unity3d.com
+data-optout-service.uca.cloud.unity3d.com
+userreporting.cloud.unity3d.com
+ads.prd.ie.internal.unity3d.com
+publisher-event.ads.prd.ie.internal.unity3d.com
+ads-privacy-api.prd.mz.internal.unity3d.com
+stats.unity3d.com
+unityads.unity3d.com
+adserver.unityads.unity3d.com
+adsx.unityads.unity3d.com
+auction.unityads.unity3d.com
+auction-banner.unityads.unity3d.com
+auction-load.unityads.unity3d.com
+cdn.unityads.unity3d.com
+config.unityads.unity3d.com
+configv2.unityads.unity3d.com
+geocdn.unityads.unity3d.com
+httpkafka.unityads.unity3d.com
+publisher-config.unityads.unity3d.com
+publisher-event.unityads.unity3d.com
+thind.unityads.unity3d.com
+webview.unityads.unity3d.com
+events.mz.unity3d.com
+ae.iads.unity3d.com
+cdn.iads.unitychina.cn
+configv2.unityads.unitychina.cn
+auction.unityads.unity.cn
+publisher-config.unityads.unity.cn
+cdn-creatives-tencent-prd.unityads.unitychina.cn
+config.unityads.unitychina.cn
+gw.mediation.unity3d.com
+i-sdk.mediation.unity3d.com
+o-sdk.mediation.unity3d.com
+# 雅虎广告
+3p-geo.yahoo.com
+3p-udc.yahoo.com
+ads.yahoo.com
+api.ads.yahoo.com
+adserver.yahoo.com
+global.adserver.yahoo.com
+us.adserver.yahoo.com
+adspecs.yahoo.com
+latam.adspecs.yahoo.com
+ush.adspecs.yahoo.com
+advertising.yahoo.com
+sea.advertising.yahoo.com
+analytics.yahoo.com
+cms.analytics.yahoo.com
+opus.analytics.yahoo.com
+sp.analytics.yahoo.com
+ups.analytics.yahoo.com
+beap-bc.yahoo.com
+comet.yahoo.com
+fc.yahoo.com
+ganon.yahoo.com
+gemini.yahoo.com
+beap.gemini.yahoo.com
+geo.yahoo.com
+marketingsolutions.yahoo.com
+pclick.yahoo.com
+analytics.query.yahoo.com
+geo.query.yahoo.com
+onepush.query.yahoo.com
+app.ssp.yahoo.com
+bats.video.yahoo.com
+visit.webhosting.yahoo.com
+ads.yap.yahoo.com
+m.yap.yahoo.com
+pr-bh.ybp.yahoo.com
+partnerads.ysm.yahoo.com
+# ADjust
+app.adjust.com
+atom.adjust.com
+events.adjust.com
+ulink.adjust.com
+view.adjust.com
+app.adjust.net.in
+app.adjust.world
+# Flurry
+ad.flurry.com
+adlog.flurry.com
+ads.flurry.com
+cdn.flurry.com
+data.flurry.com
+flurry.com
+proton.flurry.com
+www.flurry.com
+flurry.cachefly.net
+# TrAdPlus
+www.tradplusad.com
+a.tradplusad.com
+api.tradplusad.com
+api-developer.tradplusad.com
+api-manager.tradplusad.com
+bidder.tradplusad.com
+callback.tradplusad.com
+cdn-2.tradplusad.com
+cn-job-inner.tradplusad.com
+conf-inner.tradplusad.com
+crosspro-track.tradplusad.com
+demo-developer.tradplusad.com
+developer.tradplusad.com
+docs.tradplusad.com
+event.tradplusad.com
+jenkins.tradplusad.com
+jmp-inner.tradplusad.com
+manager.tradplusad.com
+pkgcn.tradplusad.com
+red-inner.tradplusad.com
+test-adx-event.tradplusad.com
+test-api-developer.tradplusad.com
+test-bidder.tradplusad.com
+test-developer.tradplusad.com
+test-event.tradplusad.com
+web-event.tradplusad.com
+# Crwdcntrl
+ad.crwdcntrl.net
+bcp.crwdcntrl.net
+meez.crwdcntrl.net
+multiply.crwdcntrl.net
+optout.crwdcntrl.net
+tags.crwdcntrl.net
+td.crwdcntrl.net
+td2.crwdcntrl.net
+ts.crwdcntrl.net
+# Adnxs
+lax1-ib.adnxs.com
+crcdn01.adnxs.com
+crcdn09.adnxs.com
+acnd.adnxs.com
+acb993446.adnxs.com
+a.m.adnxs.com
+a.adnxs.com
+2fvcdn.adnxs.com
+2fprebid.adnxs.com
+2fsecure.adnxs.com
+2flax1.ib.adnxs.com
+2fmobile.adnxs.com
+2fm.adnxs.com
+2fib.adnxs.com
+2facdn.adnxs.com
+2dib.adnxs.com
+2dn.adnxs.com
+252fm.adnxs.com
+2525252fib.adnxs.com
+25252fsecure.adnxs.com
+01.adnxs.com
+fra1.ib.adnxs.com
+nym1-ib.adnxs.com
+b.adnxs.com
+ams1-ib.adnxs.com
+www.adnxs.com
+prebid.adnxs.com
+ib.sin1.adnxs.com
+m.adnxs.com
+acdn.adnxs.com
+vcdn.adnxs.com
+cdn.adnxs.com
+sin1-ib.adnxs.com
+cdn.oas-c17.adnxs.com
+cdn.oas-eu1.adnxs.com
+secure.adnxs.com
+ib.adnxs.com
+sin3-ib.adnxs.com
+mediation.adnxs.com  # 据说是outlook的置顶广告，然而lite的还在
+msft-ssp.adnxs.com
+# AppLovin
+prod-mediate-events.applovin.com
+prod-ms4.applovin.com
+dash.applovin.com
+vid.applovin.com
+stage-vid.applovin.com
+stage-ms.applovin.com
+res1.applovin.com
+a4.applovin.com
+pdn.applovin.com
+ms4.applovin.com
+img.applovin.com
+prod-ms.applovin.com
+artifacts.applovin.com
+growth-support.applovin.com
+r.applovin.com
+ms.applovin.com
+a-support.applovin.com
+a-usa.applovin.com
+prod-a.applovin.com
+assets.applovin.com
+d.applovin.com
+rt.applovin.com
+www.applovin.com
+a.applovin.com
+applovin.com
+# Taboola
+hk-api.taboola.com
+hk-trc-events.taboola.com
+ads.taboola.com
+publisher.taboola.com
+nr-events.taboola.com
+hk-vid-events.taboola.com
+sg-vid-events.taboola.com
+resources.taboola.com
+cds.taboola.com
+vidstatb.taboola.com
+la-wf.taboola.com
+la-vid-events.taboola.com
+la-match.taboola.com
+la-api.taboola.com
+imprhkmp.taboola.com
+imprnjmp.taboola.com
+imprlatbmp.taboola.com
+images-dl.taboola.com
+trc-events.taboola.com
+c3.taboola.com
+sync.taboola.com
+authentication.taboola.com
+t5.taboola.com
+ch-match.taboola.com
+popup.taboola.com
+sync-t1.taboola.com
+actions-sg.taboola.com
+actions-nj.taboola.com
+actions-ch.taboola.com
+actions-latb.taboola.com
+actions-am.taboola.com
+actions-hk.taboola.com
+accessrequest.taboola.com
+hk-sync.taboola.com
+opps.taboola.com
+signup.taboola.com
+blog.taboola.com
+trc.taboola.com
+vidutils.taboola.com
+wf.taboola.com
+nr.taboola.com
+images.taboola.com
+15.taboola.com
+c2.taboola.com
+cdn.taboola.com
+api.taboola.com
+match.taboola.com
+www.taboola.com
+# Inmobi
+go.inmobi.com
+uat-demo.pulse.inmobi.com
+iam.inmobi.com
+myvpn.inmobi.com
+manifold-config-server-staging.glanceai.inmobi.com
+cmp.inmobi.com
+ic.de.inmobi.com
+sync.inmobi.com
+dspbeacons.ihasdsp.inmobi.com
+university.inmobi.com
+mcg-ads.inmobi.com
+w.inmobi.com
+et-eus.w.inmobi.com
+publisher.inmobi.com
+b.de.inmobi.com
+access.inmobi.com
+sdkm.w.inmobi.com
+ads.inmobi.com
+telemetry.sdk.inmobi.com
+config-ltvp.inmobi.com
+js.w.inmobi.com
+chinacdntest-b59b.inmobi.com
+e-ltvp.inmobi.com
+c2.w.inmobi.com
+et.w.inmobi.com
+config.inmobi.com
+vast.w.inmobi.com
+i.w.inmobi.com
+au.w.inmobi.com
+www.inmobi.com
+china.inmobi.com
+api.w.inmobi.com
+cnvpn.inmobi.cn
+cdn-creatives-stag.inmobi.cn
+pub.inmobi.cn
+carb.inmobi.cn
+union.w.inmobi.cn
+sdk-infra.inmobi.cn
+cdn-creatives.inmobi.cn
+winnotice.inmobi.cn
+event.inmobi.cn
+ads.inmobi.cn
+test-fuse.inmobi.cn
+bi.inmobi.cn
+telemetry.sdk.inmobi.cn
+api.inmobi.cn
+sdkm.w.inmobi.cn
+et.w.inmobi.cn
+i.w.inmobi.cn
+au.w.inmobi.cn
+config.inmobi.cn
+www.inmobi.cn
+api.w.inmobi.cn
+# Branch营销
+www.branch.io
+api.branch.io
+api2.branch.io
+blog.branch.io
+cdn.branch.io
+dashboard.branch.io
+dev.branch.io
+vulcan1.branch.io
+vulcan5.branch.io
+# AppsFlyer营销
+launches.appsflyersdk.com
+conversions.appsflyersdk.com
+gcdsdk.appsflyersdk.com
+inapps.appsflyersdk.com
+cdn-settings.appsflyersdk.com
+staging-cdn-testsettings.appsflyersdk.com
+cfwz.customlinks.appsflyer.com
+email.appsflyer.com
+cdnappicons.appsflyer.com
+go.appsflyer.com
+afmarketingdev.appsflyer.com
+chinaqa.appsflyer.com
+learn.appsflyer.com
+skadsdk.appsflyer.com
+banners.appsflyer.com
+fvalid.appsflyer.com
+statusdevops.appsflyer.com
+websdk.appsflyer.com
+wa.appsflyer.com
+2016.appsflyer.com
+inapps.appsflyer.com
+api.appsflyer.com
+conversions.appsflyer.com
+s2s.appsflyer.com
+statsgoogle.appsflyer.com
+validate.appsflyer.com
+biz.appsflyer.com
+customlinks.appsflyer.com
+services.appsflyer.com
+launches.appsflyer.com
+register.appsflyer.com
+gcdsdk.appsflyer.com
+rawdata.appsflyer.com
+api2.appsflyer.com
+cdn.appsflyer.com
+impression.appsflyer.com
+attr.appsflyer.com
+sdk.appsflyer.com
+hq.appsflyer.com
+sdk-services.appsflyer.com
+monitorsdk.appsflyer.com
+m.appsflyer.com
+stats.appsflyer.com
+t.appsflyer.com
+support.appsflyer.com
+events.appsflyer.com
+app.appsflyer.com
+hq1.appsflyer.com
+track.appsflyer.com
+www.appsflyer.com
+# SuperSonicAds
+ow-gateway.supersonicads.com
+ssp.supersonicads.com
+is-gateway.supersonicads.com
+pm-gateway.supersonicads.com
+outcome-cdn.supersonicads.com
+iab-imp-gateway.supersonicads.com
+outcome-ssp.supersonicads.com
+api.supersonicads.com
+gateway.supersonicads.com
+init.supersonicads.com
+rv-gateway.supersonicads.com
+ua.supersonicads.com
+www.supersonicads.com
+outcome.supersonicads.com
+# Mtgglobals
+cdn-adn-https.mtgglobals.com
+configure-tcp-android.mtgglobals.com
+hybird.mtgglobals.com
+mtg-h5.mtgglobals.com
+observe-tcp.mtgglobals.com
+mtg-native.mtgglobals.com
+play.mtgglobals.com
+nl-gcp-ad-track-sdk-europe-west4-c.mtgglobals.com
+nl-new-cdn-ssplib-europe-west4-b-hb.mtgglobals.com
+nl-new-cdn-ssplib-europe-west4-c-hb.mtgglobals.com
+# Vungle
+ads.api.vungle.com
+adx.ads.vungle.com
+config.ads.vungle.com
+events.ads.vungle.com
+logs.ads.vungle.com
+cdn-lb.vungle.com
+logs-cn.ads.vungle.com
+cm.adkmob.com
+ssdk.adkmob.com
+bigdata.advmob.cn
+cdn0.mobmore.com
+ex.mobmore.com
+ad.duomi.com
+service.ad.duomi.com
+ad.sinovision.net
+adsys.sinovision.net
+www.admaji.com
+ad.cacafly.com
+ad.funp.com
+ad.hiiir.com
+ad.jamba.net
+ad.jamster.co.uk
+ad.obuy.tw
+ads.fetnet.net
+ads.ign.com
+ads.ttv.com.tw
+ad.oceanengine.com
+miniapp-ad.cdn.bcebos.com
+d.applvn.com
+ms.applvn.com
+rt.applvn.com
+adcs-ue.myappsget.com
+api.myadsget.com
+midas-tracker.hellay.net
+adcs-ap.myappsget.com
+adx-tk.rayjump.com
+adx.apiok.net
+net.rayjump.com
+ad.hpplay.cn
+adc.hpplay.cn
+adcdn.hpplay.cn
+adeng.hpplay.cn
+ad.lflucky.com
+ads.icloseli.cn
+androidads4-6.adcolony.com
+adc3-launch.adcolony.com
+wd.adcolony.com
+adx-os.toponadss.com
+api.toponadss.com
+datk.toponadss.com
+startup.mobile.yandex.net
+mobile.yandexadexchange.net
+san.myadssupport.com
+dns.m.sm.cn
+log.m.sm.cn
+c.bidtoolads.com
+api.yfanads.com
+nl-new-cdn-ssplib-europe-west4-b-hb.rayjump.com
+# 0.0.0.0 yandex.ru 【vpnify】底部横幅和弹窗，看上去会误杀很多俄罗斯的yandex网站的内容
+# 从茄子快传(SHAREit)抓出的广告域名
+noti-asia.adsmoloco.com
+plutus.lacunads.com
+adx.mossru.com
+tk.mossru.com
+tkda.mossru.com
+sg-new-ssplib-asia-southeast1-b-hb.rayjump.com
+sg-new-ssplib-asia-southeast1-c-hb.rayjump.com
+log.sgsnssdk.com
+mediation-sg.pangle.io
+mediation-sg2-log.pangle.io
+api.dollphoin.site
+api.inmense.site
+api.kickoffo.site
+api.onegg.site
+# SHAREit End
+# 各大广告联盟
+# 个推广告
+www.igexin.com
+20.igexin.com
+api.bz.igexin.com
+api.dizhensubao.igexin.com
+api.gi.igexin.com
+api.nz.igexin.com
+api.nz4.igexin.com
+amp.nz.igexin.com
+amp.nz4.igexin.com
+api.y.igexin.com
+bazhua.igexin.com
+cm012.getui.igexin.com
+cm016.getui.igexin.com
+cm023.getui.igexin.com
+cm032.getui.igexin.com
+cm034.getui.igexin.com
+cm036.getui.igexin.com
+cm055.getui.igexin.com
+cm058.getui.igexin.com
+cm060.getui.igexin.com
+cm063.getui.igexin.com
+cm069.getui.igexin.com
+cm071.getui.igexin.com
+cm072.getui.igexin.com
+cm074.getui.igexin.com
+cm075.getui.igexin.com
+cm076.getui.igexin.com
+cm082.getui.igexin.com
+cm085.getui.igexin.com
+cm-10-11.igexin.com
+cm-10-20.igexin.com
+cm-10-36.igexin.com
+cm-10-69.igexin.com
+c.nz.gt.igexin.com
+inc2.igexin.com
+open.inc2.igexin.com
+sdk.open.inc2.igexin.com
+getui.igexin.com
+d.gt.igexin.com
+mvn.gt.igexin.com
+phone.igexin.com
+open.phone.igexin.com
+sdk.open.phone.igexin.com
+ps.cname1.igexin.com
+sd.cname2.igexin.com
+sd.cname3.igexin.com
+sdk.conf.igexin.com
+sdk.open.amp.igexin.com
+sdk.open.lbs.igexin.com
+talk.igexin.com
+open.talk.igexin.com
+sdk.open.talk.igexin.com
+talk.nz.igexin.com
+talk.nz4.igexin.com
+xy.phone.igexin.com
+www.gepush.com
+gi.gepush.com
+b-gi.gepush.com
+c-gi.gepush.com
+gs.gepush.com
+b-gs.gepush.com
+c-gs.gepush.com
+gtc.gepush.com
+gtcv6.gepush.com
+b-gtc.gepush.com
+c-gtc.gepush.com
+gy.gepush.com
+b-gy.gepush.com
+c-gy.gepush.com
+ido.gepush.com
+c-ido.gepush.com
+b-phonev6.gepush.com
+oneid.gepush.com
+c-oneid.gepush.com
+h5-oneid.gepush.com
+sdk.open.talk.gepush.com
+talk.bz.gepush.com
+talk.nz.gepush.com
+talk.nz4.gepush.com
+wshzn.gepush.com
+www.getui.com
+amp.nz4.getui.com
+api.getui.com
+api.dizhensubao.getui.com
+baobao.getui.com
+api-gi.getui.com
+b-gi.getui.com
+c-gi.getui.com
+cdn-getuigw.getui.com
+cdn-sdk-opt.getui.com
+cf.getui.com
+channel.getui.com
+c-hzgt2.getui.com
+cm-10-10.getui.com
+cm-10-13.getui.com
+cm-10-14.getui.com
+cm-10-16.getui.com
+cm-10-21.getui.com
+cm-10-23.getui.com
+cm-10-28.getui.com
+cm-10-29.getui.com
+cm-10-32.getui.com
+cm-10-33.getui.com
+cm-10-35.getui.com
+cm-10-36.getui.com
+cm-10-37.getui.com
+cm-10-39.getui.com
+cm-10-40.getui.com
+cm-10-41.getui.com
+cm-10-44.getui.com
+cm-10-47.getui.com
+cm-10-55.getui.com
+cm-10-57.getui.com
+cm-10-58.getui.com
+cm-10-59.getui.com
+cm-10-60.getui.com
+cm-10-70.getui.com
+cm-10-133.getui.com
+cm-10-136.getui.com
+cm-10-138.getui.com
+cmyd-10-11.getui.com
+cmyd-10-95.getui.com
+cmyd-10-124.getui.com
+cmyd-10-126.getui.com
+cmyd-10-128.getui.com
+cmyd-10-132.getui.com
+cmv6-10-81.getui.com
+cnaac.getui.com
+cncapi.getui.com
+cncrestapi.getui.com
+c-oneid.getui.net
+c-ss.getui.com
+dev.getui.com
+dizhensubao.getui.com
+dk-open-phone.getui.com
+dmp.getui.com
+dnms.getui.com
+docs.getui.com
+gavpn.getui.com
+gdios.bi.getui.com
+geatmap.getui.com
+geatmap-ws.getui.com
+geyan.getui.com
+gezhen-api.getui.com
+gs.getui.com
+c-gs.getui.com
+gtc.getui.com
+b-gtc.getui.com
+c-gtc.getui.com
+gtvpn.getui.com
+hzgt2.getui.com
+imap.getui.com
+iop.getui.com
+job.getui.com
+jnat.getui.com
+k-gtc.getui.com
+lc.getui.com
+mvn.gt.getui.com
+nzapi.getui.com
+nzrestapi.getui.com
+oa.getui.com
+oneid.getui.net
+openapi-gy.getui.com
+openapi-smsp.getui.com
+oss-public.getui.com
+oss-private.getui.com
+pan.getui.com
+phone.getui.com
+pop.getui.com
+ps.cname2.getui.com
+psbi.cname.getui.com
+publicalert.service.getui.com
+q.getui.com
+rtb.getui.com
+restapi.getui.com
+sd.cname3.getui.com
+s-gt.getui.com
+sdk1api.getui.com
+sdk2api.getui.com
+sdk3api.getui.com
+sdk.conf.getui.com
+sdk-conf.getui.com
+sdk-open-phone.getui.com
+sdk.open.talk.getui.com
+smtp.getui.com
+szxy.getui.com
+talkv6.getui.com
+talk.nz4.getui.com
+telapi.getui.com
+test-pan.getui.com
+xfr-ss.getui.com
+ybp.getui.com
+wb-talk.nz4.getui.com
+wb-talk.nz4.getui.cn
+api.getui.cn
+restapi.getui.cn
+wb-ezapi.getui.cn
+dev-gitlab.getui.net
+gtc.getui.net
+b-gtc.getui.net
+c-gtc.getui.net
+gi.getui.net
+b-gi.getui.net
+c-gi.getui.net
+gs.getui.net
+c-gs.getui.net
+gtcv6.getui.net
+gy.getui.net
+b-gy.getui.net
+c-gy.getui.net
+ido.getui.net
+c-ido.getui.net
+b-phonev6.getui.net
+sdk.open.talk.getui.net
+talk.nz.getui.net
+talk.nz4.getui.net
+wshz.getui.net
+c-w.applk.cn
+c-w-s.applk.cn
+ps-w.applk.cn
+s-w.applk.cn
+# 极光推送
+easytomessage.com
+action.service.user.jiguang.cn
+ad.open.jiguang.cn
+adx-event.ad.jiguang.cn
+api.jiguang.cn
+api.data.jiguang.cn
+apidy.vaas.jiguang.cn
+api.iot.jiguang.cn
+api.yun.jiguang.cn
+blog.jiguang.cn
+bj8-api.ad.jiguang.cn
+bjapi.push.jiguang.cn
+bj-api.ad.jiguang.cn
+cdp.jiguang.cn
+community.jiguang.cn
+data.vaas.jiguang.cn
+dlop.im.jiguang.cn
+docs.jiguang.cn
+fmedia.im.jiguang.cn
+funds.iapp.jiguang.cn
+gd-api.ad.jiguang.cn
+h5.verification.jiguang.cn
+hawk-arvpn.jiguang.cn
+img.jiguang.cn
+ir.jiguang.cn
+janalytics.jiguang.cn
+jchat.im.jiguang.cn
+jg-cms.jiguang.cn
+jverification.jiguang.cn
+kepler-pick.jiguang.cn
+m.jiguang.cn
+mlinks.jiguang.cn
+polar-sdk-api.jiguang.cn
+pop.jiguang.cn
+report-stats.ad.jiguang.cn
+res.ad.jiguang.cn
+res-push.ad.jiguang.cn
+rewards.jiguang.cn
+sdk.im.jiguang.cn
+sdk.verification.jiguang.cn
+sdksecure.im.jiguang.cn
+sdkapi-smartop.jiguang.cn
+sdkfiledl.jiguang.cn
+sis.iot.jiguang.cn
+smartop-sdkapi.jiguang.cn
+smartop-sdkapi-ipv6.jiguang.cn
+smtp.jiguang.cn
+ssp.jiguang.cn
+ssp-sdk-api.jiguang.cn
+ssp-sdk-status.jiguang.cn
+stat-srv.jiguang.cn
+svpn-hawk.jiguang.cn
+svpn-szlg.jiguang.cn
+test.jiguang.cn
+test.data.jiguang.cn
+test-kepler-pick.jiguang.cn
+update.sdk.jiguang.cn
+vaas.junion.jiguang.cn
+web-stat.jiguang.cn
+ws.im.jiguang.cn
+www.jiguang.cn
+www.jpush.cn
+admin.jpush.cn
+ali-stats.jpush.cn
+api.jpush.cn
+api.data.jpush.cn
+api.im.jpush.cn
+api.sms.jpush.cn
+api.srv.jpush.cn
+api.verification.jpush.cn
+awake-stats.jpush.cn
+bj-api.srv.jpush.cn
+bjim64.jpush.cn
+bjuser.jpush.cn
+bjuser-ipv6.jpush.cn
+ce3e75d5.jpush.cn
+ce3e75d5-ipv6.jpush.cn
+community.jpush.cn
+config.jpush.cn
+config-ipv6.jpush.cn
+config-junion.jpush.cn
+demo-jmlink.jpush.cn
+demo.verification.jpush.cn
+device.jpush.cn
+docs.jpush.cn
+fcapi.jpush.cn
+fcapi-ipv6.jpush.cn
+gd-stats.jpush.cn
+hwapi.jpush.cn
+im.jpush.cn
+im64.jpush.cn
+mail.jpush.cn
+mini-stats.jpush.cn
+p-fastdfs.jpush.cn
+portal-fastdfs.jpush.cn
+pushstyle.jpush.cn
+report.jpush.cn
+report.im.jpush.cn
+s.jpush.cn
+sdk.im.jpush.cn
+sdk-jmlink.jpush.cn
+share-jmlink.jpush.cn
+state.jpush.cn
+stats.jpush.cn
+stats-ipv6.jpush.cn
+status.jpush.cn
+status-ipv6.jpush.cn
+svr-community.jpush.cn
+sis.jpush.io
+sis.jpush.cn
+sis-ipv6.jpush.cn
+tsis-ipv6.jpush.cn
+tsis.jpush.cn
+tcpreport.jpush.cn
+tracking-jmlink.jpush.cn
+user.jpush.cn
+web-stat.jpush.cn
+wj.jpush.cn
+# 友盟广告
+umeng.cn
+umeng.co
+umeng.cc
+umeng.com
+www.umeng.co
+www.umeng.com
+alog.umeng.co
+au.umeng.co
+oc.umeng.co
+aaid.umeng.com
+account.umeng.com
+act.umeng.com
+activity.umeng.com
+adplus.umeng.com
+ai.login.umeng.com
+1alog.umeng.com
+alog.umeng.com
+alog-default.umeng.com
+alogs.umeng.com
+alogsus.umeng.com
+alogus.umeng.com
+alon.umeng.com
+along.umeng.com
+amdcopen.m.umeng.com
+andeyeplus.umeng.com
+api.umeng.com
+api.wsq.umeng.com
+apm.umeng.com
+ar.umeng.com
+at.umeng.com
+au.umeng.com
+au.apk.umeng.com
+audid.umeng.com
+bbu.umeng.com
+beta.umeng.com
+ccs.umeng.com
+cic.umeng.com
+cnlogs.umeng.com
+compass.umeng.com
+community.umeng.com
+deeplink.umeng.com
+dev.umeng.com
+developer.umeng.com
+dip.umeng.com
+dop.openapi.umeng.com
+dplus.umeng.com
+dsp.ads.umeng.com
+errrloh.umeng.com
+# 0.0.0.0 errlog.umeng.com
+# 0.0.0.0 errlogos.umeng.com
+# 0.0.0.0 errnewlog.umeng.com
+# 0.0.0.0 errnewlogos.umeng.com
+events.umeng.com
+ex.umengcloud.com
+fb.umeng.com
+feedback.umeng.com
+finplus.openapi.umeng.com
+gateway.open.umeng.com
+growth.umeng.com
+hcrlm2.wsq.umeng.com
+i.umeng.com
+imgdspcdn.umeng.com
+index.umeng.com
+info.umeng.com
+ishansong.comalog.umeng.com
+intl.mtp.umeng.com
+ipv6.umeng.com
+laog.umeng.com
+log.umeng.com
+logs.umeng.com
+m.umeng.com
+message.umeng.com
+mobile.umeng.com
+mp.umeng.com
+msg.umeng.com
+msgapi.umeng.com
+mtp.umeng.com
+mxf.wsq.umeng.com
+newrta.umeng.com
+oc.umeng.com
+ocp.umeng.com
+ocx.umeng.com
+offmsg.umeng.com
+ocx.umeng.com
+open.umeng.com
+oss.message.umeng.com
+# 0.0.0.0 ossnt-errlog.umeng.com
+ouplog.umeng.com
+outdip.umeng.com
+passport.umeng.com
+pigeon.umeng.com
+plblog.umeng.com
+plbslog.umeng.com
+plbsloog.umeng.com
+pslog.umeng.com
+push.umeng.com
+qq.complbslog.umeng.com
+resolve.umeng.com
+rest.wsq.umeng.com
+rta.umeng.com
+s.umeng.com
+sec.umeng.com
+solution.umeng.com
+sss.umeng.com
+support.umeng.com
+tip.umeng.com
+ucc.umeng.com
+udplus.umeng.com
+ugame.umeng.com
+ulog.umeng.com
+ulogs.umeng.com
+uop.umeng.com
+upush.umeng.com
+aspect-upush.umeng.com
+utmconfig.umeng.com
+utoken.umeng.com
+uweb.umeng.com
+video.umeng.com
+web.umeng.com
+workbench.umeng.com
+wsq.umeng.com
+umengcloud.com
+www.umengcloud.com
+alog.umengcloud.com
+alogs.umengcloud.com
+cnlogs.umengcloud.com
+ex.umengcloud.com
+log.umengcloud.com
+msg.umengcloud.com
+uk.umengcloud.com
+udash.umengcloud.com
+ulog.umengcloud.com
+ulogs.umengcloud.com
+upoll.umengcloud.com
+utop.umengcloud.com
+log.umsns.com
+stats.umsns.com
+umtrack.com
+at.umtrack.com
+log.umtrack.com
+uni-shumeng.zhipin.com
+# TalkingData-数据、分析、广告
+www.xdrig.com
+adt.xdrig.com
+app.xdrig.com
+av1.xdrig.com
+cloud.xdrig.com
+conf.xdrig.com
+ga.xdrig.com
+gv.xdrig.com
+gv1.xdrig.com
+idauth.xdrig.com
+me.xdrig.com
+pg.xdrig.com
+push.xdrig.com
+tdsdk.xdrig.com
+tdsdk-ip6.xdrig.com
+# 布里奇信息(酷安评论信息流广告用)
+www.anythinktech.com
+api.anythinktech.com
+adx.anythinktech.com
+adx-bj.anythinktech.com
+adx-bj-req.anythinktech.com
+adx-cn.anythinktech.com
+adx-cn-req.anythinktech.com
+cn-api.anythinktech.com
+cn-da.anythinktech.com
+cn-tk.anythinktech.com
+da.anythinktech.com
+damax.anythinktech.com
+datk.anythinktech.com
+img.anythinktech.com
+tk.anythinktech.com
+tkda.anythinktech.com
+mores.anythinktech.com
+ujoy.anythinktech.com
+aa.birdgesdk.com
+pitk.birdgesdk.com
+api.bridgeoos.com
+# 天目广告
+www.admobile.top
+a.admobile.top
+adctl.admobile.top
+api.ad.admobile.top
+api.sdk.admobile.top
+api.ssp.admobile.top
+ax.admobile.top
+dc.admobile.top
+doc.admobile.top
+img.admobile.top  # 叮嗒出行
+jump.admobile.top
+m.admobile.top
+maven.admobile.top
+monitor.ssp.admobile.top
+sdk.ssp.admobile.top
+sspapi.admobile.top
+u.ssp.admobile.top
+ad.tianmu.mobi
+ad-asm.tianmu.mobi
+sdk.tianmu.mobi
+tracker.tianmu.mobi
+# 贵士移动
+a.qchannel01.cn
+b.qchannel01.cn
+c.qchannel01.cn
+d.qchannel01.cn
+log.qchannel01.cn
+truth.qchannel01.cn
+a.qchannel03.cn
+b.qchannel03.cn
+b2.qchannel03.cn
+bdloc.qchannel03.cn
+bj.qchannel03.cn
+d.qchannel03.cn
+fd.qchannel03.cn
+fd2.qchannel03.cn
+ftp.qchannel03.cn
+gdloc.qchannel03.cn
+gdloc2.qchannel03.cn
+hap.qchannel03.cn
+i.qchannel03.cn
+ipt.qchannel03.cn
+kw.qchannel03.cn
+log.qchannel03.cn
+n.qchannel03.cn
+qy.qchannel03.cn
+spt.qchannel03.cn
+truth.qchannel03.cn
+www.qchannel03.cn
+wy.qchannel03.cn
+# 上海游昆数据
+api-c.hiaiabc.com
+api-d.hiaiabc.com
+api-df.hiaiabc.com
+api-exc.hiaiabc.com
+api-gd.hiaiabc.com
+api-verify.hiaiabc.com
+cache-verify.hiaiabc.com
+cdn-api-verify.hiaiabc.com
+devs-data.hiaiabc.com
+log-verify.hiaiabc.com
+m-mpl.hiaiabc.com
+abroad-sdk-push.hiaiabc.com
+sdk-push.hiaiabc.com
+api-p0.yksdks.com
+api-p1.yksdks.com
+api-p2.yksdks.com
+api-p3.yksdks.com
+api-p4.yksdks.com
+v6-api-p0.yksdks.com
+v6-api-p1.yksdks.com
+v6-api-p2.yksdks.com
+v6-api-p3.yksdks.com
+v6-api-p4.yksdks.com
+# 袤博
+106k.l.mob.com
+1106.l.mob.com
+117b.l.mob.com
+11f3.l.mob.com
+1379.l.mob.com
+13gv.l.mob.com
+13j5.l.mob.com
+13r6.l.mob.com
+1426.l.mob.com
+144e.l.mob.com
+15dv.l.mob.com
+161i.l.mob.com
+164r.l.mob.com
+25ds.l.mob.com
+addrlist.sms.mob.com
+api-share.mob.com
+api.adnet.mob.com
+api.analy.mob.com
+api.applink.mob.com
+api.df.mob.com
+api.dm.mob.com
+api.exc.mob.com
+api.exv.mob.com
+api.fc.mob.com
+api.fd.mob.com
+api.mob.com
+api.moblink.mob.com
+api.push.mob.com
+api.share.mob.com
+api.u.mob.com
+api.utag.mob.com
+api.verify.mob.com
+api.webshare.mob.com
+apicloud.mob.com
+auth.dlb.mob.com
+aw.mic.mob.com
+b.mob.com
+bbs.mob.com
+c.data.mob.com
+cache.verify.mob.com
+cca.mob.com
+ccf.l.mob.com
+cdn-api-verify.mob.com
+code.sms.mob.com
+console.dm.mob.com
+d.mob.com
+data.mob.com
+dev.ios.mob.com
+devs.data.mob.com
+df-mic.mob.com
+df.mic.mob.com
+dfe-mic.mob.com
+dfe.mic.mob.com
+download.sdk.mob.com
+download.sharesdk.mob.com
+epi.exc.mob.com
+f.gm.mob.com
+f.moblink.mob.com
+f1.webshare.mob.com
+f2.mob.com
+gm.mob.com
+i.gm.mob.com
+id.aaa.mob.com
+identify.verify.mob.com
+init.sms.mob.com
+l.gm.mob.com
+l.mob.com
+lks.share.mob.com
+log-verify.mob.com
+log.sms.mob.com
+m.data.mob.com
+mobdata.mob.com
+mobpay.mob.com
+monitor.dsp.mob.com
+mtalk.mob.com
+mvn.mob.com
+new.dashboard.mob.com
+p.share.mob.com
+push.mob.com
+rec.mob.com
+s-mic-oss.mob.com
+s.mic.mob.com
+sc.atest.mob.com
+sdk.guard.mob.com
+sdk.push.mob.com
+sdkapi.sms.mob.com
+share.mob.com
+sharesdk.mob.com
+sms.mob.com
+spam.mob.com
+static.mob.com
+u1.mob.com
+up.mob.com
+up.sdk.mob.com
+v.data.mob.com
+v6-api-share.mob.com
+v6-api.share.mob.com
+vpn1.ga.mob.com
+vpn2.ga.mob.com
+webapi.sms.mob.com
+wiki.mob.com
+www.mob.com
+api-p0.mobsurl.com
+api-p1.mobsurl.com
+api-p2.mobsurl.com
+api-p3.mobsurl.com
+api-p4.mobsurl.com
+v6-api-p0.mobsurl.com
+v6-api-p1.mobsurl.com
+v6-api-p2.mobsurl.com
+v6-api-p3.mobsurl.com
+v6-api-p4.mobsurl.com
+www.mobsurl.com
+# 讯飞营销云
+ads.voiceads.cn
+agms.voiceads.cn
+agr.voiceads.cn
+ai.voiceads.cn
+api.voiceads.cn
+bjimp.voiceads.cn
+bj.imp.voiceads.cn
+cs.voiceads.cn
+data.voiceads.cn
+douyu.grey.voiceads.cn
+federatedlearning.voiceads.cn
+idp.voiceads.cn
+ils.voiceads.cn
+imp.voiceads.cn
+llmchat.voiceads.cn
+moji.ws.voiceads.cn
+msdk.voiceads.cn
+mt.voiceads.cn
+nex.wsa.voiceads.cn
+post1.voiceads.cn
+qingtingfm.ws.voiceads.cn
+rtb.voiceads.cn
+sdk.voiceads.cn
+sdkconfig.voiceads.cn
+smartsails.voiceads.cn
+smartvideo.voiceads.cn
+smartvideo-test.voiceads.cn
+v.voiceads.cn
+ws.voiceads.cn
+xiaomi.ws.voiceads.cn
+xiaozhi.ai.voiceads.cn
+www.voiceads.cn
+# 趣盟广告
+aip.aiclk.com
+adv.aiclk.com
+api-ga.aiclk.com
+api.aiclk.com
+cdn.aiclk.com
+cfg.aiclk.com
+cfg-cdn.aiclk.com
+config-flag.aiclk.com
+cpc-service-square.aiclk.com
+cpc-cdn.aiclk.com
+cpc-service-square.aiclk.com
+dmp-api.aiclk.com
+game-motivatead.aiclk.com
+inner-million-api.aiclk.com
+jupyter.aiclk.com
+logrcv.aiclk.com
+million-api.aiclk.com
+oss.cdn.aiclk.com
+oss.material.aiclk.com
+pre-oc.aiclk.com
+rcb.aiclk.com
+rcv.aiclk.com
+sdk-ab-config.aiclk.com
+trace-api.aiclk.com
+tracelog-debug.aiclk.com
+update0.aiclk.com
+upload.aiclk.com
+usr-api.aiclk.com
+v2.aiclk.com
+v002.aiclk.com
+whale-api.aiclk.com
+# 数字联盟
+www.shuzilm.cn
+aads.shuzilm.cn
+adt.shuzilm.cn
+api.shuzilm.cn
+api1.shuzilm.cn
+1a839d.api1.shuzilm.cn
+audd.shuzilm.cn
+caid.shuzilm.cn
+cbsipv4.shuzilm.cn
+d2api.shuzilm.cn
+2ad8d1.d2api.shuzilm.cn
+9ec126.d2api.shuzilm.cn
+ce10aa.d2api.shuzilm.cn
+d13828.d2api.shuzilm.cn
+daa.shuzilm.cn
+daa2.shuzilm.cn
+dai.shuzilm.cn
+dcc.shuzilm.cn
+dcc2.shuzilm.cn
+ddi.shuzilm.cn
+ddi2.shuzilm.cn
+dma.shuzilm.cn
+download.shuzilm.cn
+downdload.shuzilm.cn
+dxld.shuzilm.cn
+ftp.shuzilm.cn
+idaa.shuzilm.cn
+idfa2.shuzilm.cn
+iert.shuzilm.cn
+ip.shuzilm.cn
+ipi.shuzilm.cn
+ipv4.shuzilm.cn
+ipv6.shuzilm.cn
+iudd.shuzilm.cn
+mobile.shuzilm.cn
+stream.shuzilm.cn
+telecom.shuzilm.cn
+unicom.shuzilm.cn
+wdaa.shuzilm.cn
+shuzilm-android.guazi.com
+shuzilm-android-uni.guazi.com
+# 秒针广告
+www.miaozhen.com
+ww.cn.miaozhen.com
+cn.miaozhen.com
+a.ads.cn.miaozhen.com
+a.hpg.cn.miaozhen.com
+admonitor.miaozhen.com
+admonitor-lite.miaozhen.com
+apac.miaozhen.com
+api.cn.miaozhen.com
+api-oohmanual.cn.miaozhen.com
+baidu-mipdx.cn.miaozhen.com
+bdsystem.miaozhen.com
+cc-mipdx.cn.miaozhen.com
+ccs-mipdx.cn.miaozhen.com
+cdn.cn.miaozhen.com
+contenttracking.cn.miaozhen.com
+coocaa-mipdx.cn.miaozhen.com
+c.x.cn.miaozhen.com
+cm.cn.miaozhen.com
+collect.cn.miaozhen.com
+cookiemapping.cn.miaozhen.com
+daascn.miaozhen.com
+e.ads.cn.miaozhen.com
+e.cn.miaozhen.com
+e.hpg.cn.miaozhen.com
+epai.cn.miaozhen.com
+elc-dforce.miaozhen.com
+exchange.ipdx.cn.miaozhen.com
+funshion-mipdx.cn.miaozhen.com
+g.ads.cn.miaozhen.com
+g.cn.miaozhen.com
+g.dtv.cn.miaozhen.com
+g.miaozhen.com
+gdt-cm.cn.miaozhen.com
+hisense-mipdx.cn.miaozhen.com
+hunantv.m.cn.miaozhen.com
+hunantv-mipdx.cn.miaozhen.com
+iqiyi.m.cn.miaozhen.com
+iqiyi-cm.cn.miaozhen.com
+iqiyi-mipdx.cn.miaozhen.com
+isov-qa.cn.miaozhen.com
+js.miaozhen.com
+konka-mipdx.cn.miaozhen.com
+letv.ipdx.cn.miaozhen.com
+letv-mipdx.cn.miaozhen.com
+migu-mipdx.cn.miaozhen.com
+mingkuaian.cn.miaozhen.com
+mixreach.cn.miaozhen.com
+monitor-tools.cn.miaozhen.com
+mos.miaozhen.com
+msg.cn.miaozhen.com
+msg.mbm.cn.miaozhen.com
+pd.ads.cn.miaozhen.com
+qq.m.cn.miaozhen.com
+qtsftl.m.cn.miaozhen.com
+sd.cn.miaozhen.com
+services.miaozhen.com
+sgm-dbei.miaozhen.com
+site-cdn.cn.miaozhen.com
+sitemonitor.cn.miaozhen.com
+smarttag.miaozhen.com
+socialx.miaozhen.com
+sohutv.hpg.cn.miaozhen.com
+sohutv.m.cn.miaozhen.com
+spare.cn.miaozhen.com
+stm.cn.miaozhen.com
+stm-cdn.cn.miaozhen.com
+stm-collect.cn.miaozhen.com
+t.pg.cn.miaozhen.com
+tongji.cn.miaozhen.com
+tyaqy.m.cn.miaozhen.com
+tytx.m.cn.miaozhen.com
+wdb.cn.miaozhen.com
+webmail.miaozhen.com
+weixin.miaozhen.com
+whitelist.admonitor.miaozhen.com
+wj.mzvpn.miaozhen.com
+xiangchaokankan.m.cn.miaozhen.com
+xiaomi-mipdx.cn.miaozhen.com
+xreach.miaozhen.com
+xunlei.ipdx.cn.miaozhen.com
+yktd.cm.cn.miaozhen.com
+yktd.m.cn.miaozhen.com
+hunantv-dtv.m.cn.miaozhen.com
+# Mediav上海聚胜万合
+360.mediav.com
+360fenxi.mediav.com
+360.munion.mediav.com
+3m.mediav.com
+api-ext.mediav.com
+cjhd.mediav.com
+ckmap.mediav.com
+cm.mediav.com
+ext.mediav.com
+g1max.mediav.com
+g1xd.mediav.com
+gouwu.mediav.com
+guess.mediav.com
+imgx.mediav.com
+info.mediav.com
+juxiao.mediav.com
+live-s3m.mediav.com
+m.mediav.com
+material-ssl.mediav.com
+material.mediav.com
+max.mediav.com
+max-l.mediav.com
+mvp.mediav.com
+msn.adx.mediav.com
+pages.juxiao.mediav.com
+pages-juxiao.mediav.com
+pv.mediav.com
+s3m.mediav.com
+sdk.mediav.com
+secure.mediav.com
+show.3.mediav.com
+show-3.mediav.com
+show-f.mediav.com
+show-g.mediav.com
+show.g.mediav.com
+show.m.mediav.com
+show-m.mediav.com
+show.s.mediav.com
+show-s.mediav.com
+ssxd.mediav.com
+static-ssl.mediav.com
+static.mediav.com
+test-m.mediav.com
+test6-m.mediav.com
+test7-m.mediav.com
+track.mediav.com
+tran.mediav.com
+upload.juxiao.mediav.com
+video.mediav.com
+xd-q.mediav.com
+xdssp.mediav.com
+www.mediav.com
+ap.livemediav.com  # 贴吧用？
+# irs01艾瑞数据
+127.irs01.com
+64511.a.irs01.com
+64979.a.irs01.com
+a850839db60d84c256fd0060cad98f2c9.z.irs01.com
+a.irs01.com
+ali.irs01.com
+auth.irs01.com
+bitauto.irs01.com
+bottle.irs01.com
+easou.irs01.com
+iqiyi.irs01.com
+iqiyi-mob-1.irs01.com
+irs01.com
+letv.irs01.com
+m.irs01.com
+msdk.irs01.com
+pcauto.irs01.com
+qq.irs01.com
+rest.irs01.com
+shjs.irs01.com
+shjs2.irs01.com
+sohu.irs01.com
+v.irs01.com
+v12-d00344a6e9w.z.irs01.com
+v12-j0954dl1xdl.z.irs01.com
+v12-j3110dfspsv.z.irs01.com
+v12-r3001zjrmka.z.irs01.com
+v12-s33249urk70.z.irs01.com
+v12-t0036kis46j.z.irs01.com
+v12-t08569q8qf7.z.irs01.com
+v12-x0024nwonyn.z.irs01.com
+v12-y0742s0wu11.z.irs01.com
+v14-1519001304070617.z.irs01.com
+v17-11166822100.z.irs01.com
+wiki.irs01.com
+xaftp.irs01.com
+xajs.irs01.com
+xajs2.irs01.com
+s72f5a8e.irs03.com
+s.irs03.com
+s1.irs03.com
+s2.irs03.com
+s3.irs03.com
+s4.irs03.com
+s6.irs03.com
+s8.irs03.com
+sa3cba2a.irs03.com
+1980_s.gw.irs03.com
+2417_s.gw.irs03.com
+2512_s.gw.irs03.com
+2513_s.gw.irs03.com
+8510_s.gw.irs03.com
+8667_s.gw.irs03.com
+8668_s.gw.irs03.com
+8710_s.gw.irs03.com
+w.irs03.com
+s9.irs03.com
+# 商助科技99click营销云
+www.oadz.com
+1.oadz.com
+671.oadz.com
+751.oadz.com
+1417.oadz.com
+1722.oadz.com
+2043.oadz.com
+2311.oadz.com
+2345.oadz.com
+2701.oadz.com
+3135.oadz.com
+a751.oadz.com
+a1662.oadz.com
+a1872.oadz.com
+a2315.oadz.com
+fac2.oadz.com
+m947.oadz.com
+m981.oadz.com
+m1268.oadz.com
+m1570.oadz.com
+m1612.oadz.com
+m1872.oadz.com
+m2297.oadz.com
+m2387.oadz.com
+s.oadz.com
+# 悠易广告
+aim.yoyi.com.cn
+amps.yoyi.com.cn
+atm.yoyi.com.cn
+cdbank.yoyi.com.cn
+d.yoyi.com.cn
+d.yoyi.tv
+databank.air.yoyi.com.cn
+databank.yoyi.com.cn
+g.rs.yoyi.com.cn
+imp.yoyi.com.cn
+imp-cdp.yoyi.com.cn
+l2tp.yoyi.com.cn
+log2.air.yoyi.com.cn
+m.yoyi.com.cn
+mapping.yoyi.com.cn
+ma-api.yoyi.com.cn
+openapi.yoyi.com.cn
+plus.yoyi.com.cn
+sdk.yoyi.com.cn
+td.yoyi.com.cn
+www.yoyi.com.cn
+# 多盟广告
+www.domob.cn
+105187.bid.domob.cn
+105155.bid.domob.cn
+105135.bid.domob.cn
+104424.bid.domob.cn
+105176.bid.domob.cn
+104515.bid.domob.cn
+104095.bid.domob.cn
+104314.bid.domob.cn
+104624.bid.domob.cn
+104217.bid.domob.cn
+104492.bid.domob.cn
+104389.bid.domob.cn
+104756.bid.domob.cn
+104792.bid.domob.cn
+104601.bid.domob.cn
+104393.bid.domob.cn
+104777.bid.domob.cn
+104649.bid.domob.cn
+104514.bid.domob.cn
+104463.bid.domob.cn
+104249.bid.domob.cn
+104402.bid.domob.cn
+104426.bid.domob.cn
+104395.bid.domob.cn
+104193.bid.domob.cn
+104094.bid.domob.cn
+104150.bid.domob.cn
+104148.bid.domob.cn
+adx-track.domob.cn
+api.domob.cn
+asmax.domob.cn
+c.domob.cn
+domob.cn
+domob.com.cn
+dos-track.domob.cn
+dvx-android.domob.cn
+e.domob.cn
+e.domob.com.cn
+mail.domob.cn
+r.domob.cn
+r.dvx.domob.cn
+r.ow.domob.cn
+s.domob.cn
+scc.domob.cn
+sd.domob.cn
+sdl.domob.cn
+sm.domob.cn
+swx.domob.cn
+u-sdk-track.domob.cn
+asmax.domobcdn.com
+dmugc-cn.domobcdn.com
+landing.domobcdn.com
+sm.domobcdn.com
+sm.easysale.domobcdn.com
+# mmstat（阿里的广告追踪）
+www.mmstat.com
+ac.mmstat.com
+ae.mmstat.com
+aligtr026.mmstat.com
+aligtr072.mmstat.com
+cnzz.mmstat.com
+d-gm.mmstat.com
+dz.mmstat.com
+go.mmstat.com
+gj.mmstat.com
+gm.mmstat.com
+gm.gds.mmstat.com
+gw.mmstat.com
+gxb.mmstat.com
+hd.mmstat.com
+ju.mmstat.com
+log.mmstat.com
+log.gds.mmstat.com
+og.mmstat.com
+oneid.mmstat.com
+perf.mmstat.com
+post.mmstat.com
+qgo.mmstat.com
+res.mmstat.com
+ru.mmstat.com
+sg.mmstat.com
+s-gm.mmstat.com
+sycm.mmstat.com
+wgo.mmstat.com
+ws.mmstat.com
+yt.mmstat.com
+yt1.mmstat.com
+# 阿里巴巴-tanx
+cdn.tanx.com
+click.tanx.com
+cmc.tanx.com
+cms.opendsp.tanx.com
+cms.tanx.com
+df.tanx.com
+ifs.tanx.com  # 据说影响闲鱼签到，可我测试没影响
+ope.tanx.com
+p.tanx.com
+pcookie.tanx.com
+ef-dongfeng.tanx.com
+mmstl-tianhe.tanx.com
+et.tanx.com
+opehs.tanx.com
+sdk-config.tanx.com
+kgb-ifs.tanx.com
+bdlog.tanx.com
+# 阿里巴巴-wrating
+c.wrating.com
+sohu.wrating.com
+click.wrating.com
+s.wrating.com
+m.wrating.com
+tongji.wrating.com
+msn.wrating.com
+msnclick.wrating.com
+cntv.wrating.com
+163.wrating.com
+# 基调听云（数据监控）
+account.tingyun.com
+apm3.tingyun.com
+beacon-err.tingyun.com
+beacon-mp.tingyun.com
+beacon.tingyun.com
+blog.tingyun.com
+boss.tingyun.com
+cellinfo.tingyun.com
+cesule.tingyun.com
+dc11.tingyun.com
+demo.tingyun.com
+dev-mysql-conf.tingyun.com
+doc.tingyun.com
+imap.tingyun.com
+member.tingyun.com
+mgwkbrs.tingyun.com
+mgwkm.tingyun.com
+mobile-symbol-upload.tingyun.com
+network.tingyun.com
+nexus2.tingyun.com
+report.tingyun.com
+saas.tingyun.com
+shipin.tingyun.com
+syh-report.tingyun.com
+tasksvr.tingyun.com
+tyrd1.tingyun.com
+wkbrs1.tingyun.com
+wkbrs2.tingyun.com
+wkdcm1.tingyun.com
+wkdcm1v6.tingyun.com
+wkdcm2.tingyun.com
+wkdcs1.tingyun.com
+wkmp2.tingyun.com
+wkrd.tingyun.com
+wkrt.tingyun.com
+www.tingyun.com
+# 杯子广告
+api-htp.beizi.biz
+# 0.0.0.0 sdk-api.beizi.biz  据说123云盘卡开屏？反正我测试都没卡过。
+sdk.beizi.biz
+sdk-event.beizi.biz
+sdk-ipv6.beizi.biz
+www.beizi.biz
+# 白盒广告
+ad.baihemob.com
+admin.baihemob.com
+inner.baihemob.com
+report.baihemob.com
+# 国双科技 营销(几十条，懒得撸完它了)
+i.gridsumdissector.com
+ad2.gridsumdissector.com
+# 新度博望(从贴吧抓出，好像是百度系的)
+videohub.xdplt.com
+rpen.xdplt.com
+xmall-res.xdplt.com
+jwa.xdplt.com
+wcpbsld.xdplt.com
+mv-ps.xdplt.com
+www.xdplt.com
+1hte.xdplt.com
+xtc.xdplt.com
+osa.xdplt.com
+mv-task.xdplt.com
+oe-book.xdplt.com
+rec.xdplt.com
+jau.xdplt.com
+xhn.xdplt.com
+xh.xdplt.com
+xe.xdplt.com
+olen.xdplt.com
+weather.xdplt.com
+mv-res.xdplt.com
+mv-jk.xdplt.com
+rpe.xdplt.com
+page.xdplt.com
+stat.xdplt.com
+pp.xdplt.com
+cd.xdplt.com
+powerful.xdplt.com
+# 深圳素人网络
+api.adprod.cn
+img.adprod.cn
+rta.adprod.cn
+ocpx.mktad.cn
+api.quminglemei.com
+data.quminglemei.com
+api.ctjpqg.cn
+api.tsyouto.cn
+# 枫岚互联-广告营销
+adx.maplehaze.cn
+dsp.maplehaze.cn
+ssp.maplehaze.cn
+www.maplehaze.cn
+# CNZZ数据
+v14.cnzz.com
+v4.cnzz.com
+hzs24.cnzz.com
+hqs10.cnzz.com
+v8.cnzz.com
+v12.cnzz.com
+v13.cnzz.com
+s82.cnzz.com
+s76.cnzz.com
+s57.cnzz.com
+s58.cnzz.com
+s51.cnzz.com
+s46.cnzz.com
+s37.cnzz.com
+s28.cnzz.com
+s137.cnzz.com
+s107.cnzz.com
+q7.cnzz.com
+gxbr.cnzz.com
+q1.cnzz.com
+jssdk.cnzz.com
+hzs25.cnzz.com
+c4.cnzz.com
+emoticon.cnzz.com
+wwe.cnzz.com
+hqs1.cnzz.com
+v2.cnzz.com
+s124.cnzz.com
+s109.cnzz.com
+pwoem.cnzz.com
+2020.cnzz.com
+s8.cnzz.com
+s72.cnzz.com
+doc.cnzz.com
+jiaoliu.cnzz.com
+b89.cnzz.com
+jifen.cnzz.com
+client.cnzz.com
+education.data.cnzz.com
+os.data.cnzz.com
+open.cnzz.com
+data.cnzz.com
+help.fenxi.cnzz.com
+s138.cnzz.com
+s36.cnzz.com
+b178.cnzz.com
+s139.cnzz.com
+s120.cnzz.com
+zs10.cnzz.com
+hzs18.cnzz.com
+all.cnzz.com
+pubg.lite.cnzz.com
+track.gxb.cnzz.com
+s49.cnzz.com
+s56.cnzz.com
+s40.cnzz.com
+alibaba.cnzz.com
+pubg.cnzz.com
+s115.cnzz.com
+mt.cnzz.com
+zvs1.cnzz.com
+b76.cnzz.com
+test.cnzz.com
+s.cnzz.com
+q13.cnzz.com
+q12.cnzz.com
+q19.cnzz.com
+s110.cnzz.com
+s54.cnzz.com
+s69.cnzz.com
+s83.cnzz.com
+v9.cnzz.com
+q.gds.cnzz.com
+s118.cnzz.com
+s33.cnzz.com
+s39.cnzz.com
+go.cnzz.com
+smtp.cnzz.com
+download.cnzz.com
+app.cnzz.com
+ns2.cnzz.com
+ns1.cnzz.com
+bookmark.cnzz.com
+cache.cnzz.com
+s78.cnzz.com
+qq.cnzz.com
+gdsns2.cnzz.com
+otg3.cnzz.com
+gdsns1.cnzz.com
+zvs2.cnzz.com
+api.mobile.cnzz.com
+z.cnzz.com
+s141.cnzz.com
+zs25.cnzz.com
+aas.cnzz.com
+cnzz.comw.cnzz.com
+mtp.cnzz.com
+mta.cnzz.com
+tui.cnzz.com
+m.cnzz.com
+b.cnzz.com
+collector.mobile.cnzz.com
+mx.cnzz.com
+engine.data.cnzz.com
+wss.cnzz.com
+stats.cnzz.com
+ping.cnzz.com
+zhanzhang.cnzz.com
+s34.cnzz.com
+s26.cnzz.com
+oplus.cnzz.com
+tongji.cnzz.com
+s130.cnzz.com
+zs8.cnzz.com
+help.cnzz.com
+s21.cnzz.com
+s74.cnzz.com
+hzvs2.cnzz.com
+a.cnzz.com
+hzs19.cnzz.com
+z3.cnzz.com
+s65.cnzz.com
+z8.cnzz.com
+hzvs1.cnzz.com
+q4.cnzz.com
+s61.cnzz.com
+hqs2.cnzz.com
+s52.cnzz.com
+z2.cnzz.com
+hzs17.cnzz.com
+s105.cnzz.com
+s94.cnzz.com
+online.cnzz.com
+qhm2.cnzz.com
+hzs10.cnzz.com
+s85.cnzz.com
+s48.cnzz.com
+hzs4.cnzz.com
+hzs5.cnzz.com
+s17.cnzz.com
+hzs23.cnzz.com
+hqs7.cnzz.com
+hqs3.cnzz.com
+s92.cnzz.com
+hzs13.cnzz.com
+s71.cnzz.com
+hzs21.cnzz.com
+hzs14.cnzz.com
+s30.cnzz.com
+s27.cnzz.com
+hqs4.cnzz.com
+hm3.cnzz.com
+s42.cnzz.com
+z12.cnzz.com
+s12.cnzz.com
+hzs2.cnzz.com
+hzs9.cnzz.com
+hm2.cnzz.com
+hm1.cnzz.com
+s67.cnzz.com
+s25.cnzz.com
+s5.cnzz.com
+s98.cnzz.com
+s102.cnzz.com
+s103.cnzz.com
+s81.cnzz.com
+hzs6.cnzz.com
+s35.cnzz.com
+z9.cnzz.com
+z10.cnzz.com
+s140.cnzz.com
+s84.cnzz.com
+jserr.cnzz.com
+s79.cnzz.com
+s6.cnzz.com
+hos1.cnzz.com
+s45.cnzz.com
+s87.cnzz.com
+hqs5.cnzz.com
+hzs16.cnzz.com
+hzs7.cnzz.com
+s47.cnzz.com
+s20.cnzz.com
+s32.cnzz.com
+qhm1.cnzz.com
+s91.cnzz.com
+s88.cnzz.com
+z5.cnzz.com
+v11.cnzz.com
+s114.cnzz.com
+s29.cnzz.com
+s24.cnzz.com
+s126.cnzz.com
+s142.cnzz.com
+s7.cnzz.com
+hzs22.cnzz.com
+s129.cnzz.com
+hzs12.cnzz.com
+s104.cnzz.com
+s80.cnzz.com
+s106.cnzz.com
+q5.cnzz.com
+s10.cnzz.com
+s121.cnzz.com
+z6.cnzz.com
+hzs3.cnzz.com
+s44.cnzz.com
+v1.cnzz.com
+hqs9.cnzz.com
+s119.cnzz.com
+s86.cnzz.com
+hzs1.cnzz.com
+q14.cnzz.com
+v6.cnzz.com
+s131.cnzz.com
+s128.cnzz.com
+s123.cnzz.com
+z7.cnzz.com
+s50.cnzz.com
+hzs8.cnzz.com
+z1.cnzz.com
+vvip.cnzz.com
+s41.cnzz.com
+s97.cnzz.com
+s127.cnzz.com
+q3.cnzz.com
+q16.cnzz.com
+s117.cnzz.com
+pw.cnzz.com
+hqs6.cnzz.com
+hzs15.cnzz.com
+z.gds.cnzz.com
+s13.cnzz.com
+s63.cnzz.com
+s19.cnzz.com
+quanjing.cnzz.com
+s14.cnzz.com
+pcookie.cnzz.com
+hzs11.cnzz.com
+ei.cnzz.com
+z4.cnzz.com
+s95.cnzz.com
+s16.cnzz.com
+s9.cnzz.com
+s4.cnzz.com
+z13.cnzz.com
+s23.cnzz.com
+s22.cnzz.com
+s3.cnzz.com
+s1.cnzz.com
+s2.cnzz.com
+w.cnzz.com
+s11.cnzz.com
+icon.cnzz.com
+zhan.cnzz.com
+q17.cnzz.com
+new.cnzz.com
+z11.cnzz.com
+v7.cnzz.com
+gzs20.cnzz.com
+c.cnzz.com
+s15.cnzz.com
+s96.cnzz.com
+www.cnzz.com
+# 美数科技（腾讯手游加速器开屏用，AM图标）
+s.1rtb.net
+sdk.1rtb.net  # pu口袋校园
+sdk-demo.1rtb.net
+zlsdk.1rtb.net
+adn.1rtb.com
+cdn.1rtb.com
+office.1rtb.com
+ne.1rtb.com
+sdk.1rtb.com
+dsp.1rtb.com
+agent-01.1rtb.com
+cm.1rtb.com
+ssp.1rtb.com
+# 软告移动广告交易平台
+monitor.ads.8le8le.com
+netease.jump.8le8le.com
+proto.ads.8le8le.com
+qtt.ads.8le8le.com
+sigmob.ads.8le8le.com
+uat1.bfsspadserver.8le8le.com
+www.8le8le.com
+# 倍业科技
+walle.bayescom.com
+shuttle.bayescom.com
+mantis.bayescom.com
+blink-upload.bayescom.com
+blink.bayescom.com
+raddus.bayescom.com
+jupiter2.bayescom.com
+ad.bayescom.com
+www.bayescom.com
+# 瑞狮网络
+tk2.vlion.cn
+bj-superset.oa.vlion.cn
+cn.oss.vlion.cn
+tk.vlion.cn
+bid-adx.vlion.cn
+mdsp.vlion.cn
+www.vlion.cn
+a.vlion.cn
+wiki.vlion.cn
+hippo.vlion.cn
+q.vlion.cn
+b.vlion.cn
+adx-saas.advlion.com
+bj-td-01-callback.advlion.com
+bj-td-menta-01-callback.advlion.com
+s1.cdn-sg.advlion.com
+www.advlion.com
+# 喆威
+api-auth.flysleep.cn
+cdn-api-auth.flysleep.cn
+cfgc.flysleep.cn
+devc.flysleep.cn
+errc.flysleep.cn
+fdl.flysleep.cn
+log-auth.flysleep.cn
+tg.flysleep.cn
+tgc.flysleep.cn
+upc.flysleep.cn
+# 掌之淘信息
+api-auth.zztfly.com
+cdn-api-auth.zztfly.com
+cfgc.zztfly.com
+devc.zztfly.com
+errc.zztfly.com
+fdl.zztfly.com
+log-auth.zztfly.com
+tg.zztfly.com
+tgc.zztfly.com
+upc.zztfly.com
+# 巨量引擎
+bes-api.oceanengine.com
+lf-event-manager.oceanengine.com
+v6-cc.oceanengine.com
+m.oceanengine.com
+api.oceanengine.com
+v3-cc.oceanengine.com
+v26-cc.oceanengine.com
+consult.oceanengine.com
+aic.oceanengine.com
+99cases.oceanengine.com
+yuntu.oceanengine.com
+partnership.oceanengine.com
+v9-linkchat.oceanengine.com
+apps.oceanengine.com
+mmm.oceanengine.com
+log-api.oceanengine.com
+v3-linkchat.oceanengine.com
+playable.oceanengine.com
+event-manager.oceanengine.com
+school-microapp.oceanengine.com
+partner.oceanengine.com
+v6-linkchat.oceanengine.com
+video-cn.oceanengine.com
+fuwu.oceanengine.com
+analytics.oceanengine.com
+z-feiyu.oceanengine.com
+trendinsight.oceanengine.com
+athena-api.oceanengine.com
+edu.school.oceanengine.com
+p0-adplatform-private.oceanengine.com
+open.oceanengine.com
+iconpark.oceanengine.com
+h5.oceanengine.com
+datahub.oceanengine.com
+sso.oceanengine.com
+business.oceanengine.com
+e.oceanengine.com
+agent.oceanengine.com
+sas.oceanengine.com
+arthur.oceanengine.com
+school.oceanengine.com
+picture.oceanengine.com
+ec.oceanengine.com
+sta.oceanengine.com
+im.oceanengine.com
+clue.oceanengine.com
+cc.oceanengine.com
+feiyu.oceanengine.com
+market.oceanengine.com
+ad.oceanengine.com
+www.oceanengine.com
+# 优比客思(七猫小说开屏广告用)
+dsp-creative.ubixioe.com
+e-u1.ubixioe.com
+entry.ubixioe.com
+md-cfg-u1.ubixioe.com
+md-data-u1.ubixioe.com
+sdk-data.ubixioe.com
+tower.ubixioe.com
+tx-cfg-u1.ubixioe.com
+tx-data-u1.ubixioe.com
+# 济南维快营销
+v.adx.hubcloud.com.cn
+api.htp.hubcloud.com.cn
+res1.hubcloud.com.cn
+sdktmp.hubcloud.com.cn
+# 优推
+ad.gameley.com
+de.ad.gameley.com
+jp.ad.gameley.com
+bi.gameley.com
+dsp.cdn.gameley.com
+lemon.gameley.com
+jp.youtui.gameley.com
+www.gameley.com
+# Sigmob移动广告平台
+adservice.sigmob.cn
+adstage.sigmob.cn
+api.ssp.sigmob.cn
+dc.sigmob.cn
+n.sigmob.cn
+rtbcallback.sigmob.cn
+tm.sigmob.cn
+track.sigmob.cn
+tracktp.sigmob.cn
+dash.sigmob.com
+dc.sigmob.com
+devm.sigmob.com
+doc.sigmob.com
+m.sigmob.com
+sdkci.sigmob.com
+www.sigmob.com
+# 章鱼移动-Octopus-移动广告平台
+vv.adintl.cn
+sv.adintl.cn
+sdkcfg.adintl.cn
+sh-adx.adintl.cn
+oss.cdn.adintl.cn
+sdklog.adintl.cn
+qutoutiao.adintl.cn
+sdkdoc.adintl.cn
+v.adintl.cn
+stat.adintl.cn
+dc.adintl.cn
+www.adintl.cn
+act.adintl.cn
+sdk.zhangyuyidong.cn  # 乐橙开屏广告
+sdklog.zhangyuyidong.cn
+# 汇量科技
+check.rayjump.com
+lazy.rayjump.com
+nl-new-cdn-ssplib-europe-west4-c-hb.rayjump.com
+policy.rayjump.com
+# 广东万唯_移动短视频广告
+ag-tk.oneway.mobi
+rta-bj.oneway.mobi
+diagnosis.oneway.mobi
+tracking.oneway.mobi
+rta.oneway.mobi
+adm.oneway.mobi
+dn.oneway.mobi
+tl.oneway.mobi
+mp.oneway.mobi
+bsy-feedcdn.oneway.mobi
+bsy0-feedcdn.oneway.mobi
+v2sso.oneway.mobi
+feed-oss.oneway.mobi
+ads.oneway.mobi
+news.oneway.mobi
+developer.oneway.mobi
+cdn.oneway.mobi
+www.oneway.mobi
+ads.oway.mobi
+tl.oway.mobi
+track.oway.mobi
+owads.audioadx.com
+owtk.audioadx.com
+# 各种乱七八糟的广告商、广告联盟
+tk.vlion.cn
+track.billowlink.com
+www.chengzijianzhan.com  # 字节
+apmplus.volces.com
+mssdk.volces.com  # 火山引擎
+neptune-api.volces.com
+gator.volces.com  # kimi智能助手v2.1.0左右首次运行没网，2.1.3之后没事了。
+tab.volces.com  # 250115测试
+tls-cn-beijing.volces.com
+vod-license-b.volccdn.com
+vod-license-m.volccdn.com
+apm.volccdn.com
+lf3-data.volccdn.com
+klink.volceapplog.com
+toblog.volceapplog.com
+tobapplog.volceapplog.com
+vod-settings.volcvod.com
+fp-it.fengkongcloud.com
+api-fp-retry-bj.fengkongcloud.com  # 风控云
+static.fengkongcloud.com
+ocpx.adwangmai.com  # 旺脉
+track-dsp.adwangmai.com
+static.66mobi.com  # 旺脉科技
+bce.bj.ad.track.66mobi.com
+volc-track-dsp.66mobi.com
+bce-track-dsp.adwangmai.com
+sdk.mobads.adwangmai.com
+sdk.adx.adwangmai.com
+tracking.ad-survey.com
+report.dhsz.cn  # 定海神针
+js.dhsz.cn
+api.instabug.com
+api.segment.io
+trace.rtbasia.com
+fms.ipinyou.com  # 品友互动
+vt.ipinyou.com
+natdetection.onethingpcs.com
+g9hc4.cn
+analytics-tcp.mintegral.net
+cdn-adn-https.mintegral.net
+configure.rayjump.com
+events.8ziben.com  # 杭州众简
+sdk.fliduo.cn  # 杭州众简
+adt.cpatrk.net
+cloud.cpatrk.net
+tdsdk.cpatrk.net
+v2.reachmax.cn  # 加和科技
+api.banyunjuhe.com  # 般芸聚合
+cdn.banyunjuhe.com
+report.banyunjuhe.com
+api.doublewin123.com  # 般芸
+report.doublewin123.com
+ser.5tmovice.com  # 梧桐悦动
+api.openinstall.io
+api2.openinstall.io  # 安装APP
+stat2.openinstall.io  # 统计广告
+api2.deepinstall.com
+stat2.deepinstall.com
+aem.dentsuchina.cn
+t.dentsuchina.cn  # 电通中国
+dsp.tuia.cn  # 推啊
+fp-it.portal101.cn
+fs.cl2009.com
+sy.cl2009.com
+sysdk.cl2009.com
+fp.tongdun.net  # 同盾科技
+static.tongdun.net
+rtb.tangelo.com.cn  # 桔柚科技
+adimage.bwton.com  # 八维通
+ad.lovefree.cc
+pic.feedsads.cn
+ad.huazirc.com
+adtracker.medproad.com
+api.th.wanzjhb.com
+nav.cn.ronghub.com
+stats.cn.ronghub.com
+datacollector-drcn.dt.hicloud.com
+fumiad.dxys.pro
+qiniu-ad.super.cn  # 超级课程表用
+api.growingio.com
+t.growingio.com
+tags.growingio.com
+v.admaster.com.cn
+cdn.ad.xelements.cn  # ↓从新浪新闻
+imp.ad.xelements.cn
+mon.ad.xelements.cn
+adxlog.9zas5.com
+adx.adubest.com
+mos.adubest.com  # ↑从新浪新闻
+img.adprod.cn
+j.youzan.com
+h5.youzan.com
+www.youzan.com
+adsdk.yandex.ru
+adttrackingprd.hwwt8.com
+trackingprd.hwwt8.com
+adx.sogaha.cn
+api.wxcjgg.cn  # 小蚕霸王餐开屏？
+user.wxcjgg.cn  # 领页广告
+sdkcfg.adintl.cn
+stats.dmp.ghac.cn  # 广汽本田营销
+# 乐播投屏及广告流
+etl.xlmc.sandai.net
+clickc.admaster.com.cn
+media.admob.com
+mob.adwhirl.com
+www.adview.cn
+report.adview.cn
+stat.funshion.net
+hw.zuimeitianqi.com
+devicemgr.hpplay.cn
+c.etoolads.cn  # 从百度网盘抓出
+sv.adintl.cn
+c.tobidad.cn
+tracker.yfanads.com
+mmjs.adutp.com
+ymjs.adutp.com  # 从网易号网页抓出，广告位。
+ad.daztoutiao.com
+ads.api.fakeloc.cc  # 从fake location
+trk.bid-algorix.cn
+xyz.bid-algorix.cn
+portal.toushibao.com  # 透视宝追踪
+adsdkapi.dxys.pro  # 付米联盟
+adx-data.yfanads.com  # 酷友说是作业精灵的、步道乐跑的
+ads-drcn.platform.hihonorcloud.com  # 华为云的
+android-sdk.zhangyuyidong.cn
+ads.adfunlink.com  # 抓自韩小圈
+adtracker.adfunlink.com
+# 杂七杂八（不含开屏）
+app.wiki.gg
+applog.camera360.com
+ad.zhuanzhuan.com  # 转转用
+g-adnet.hiaiabc.com
+m-adnet.hiaiabc.com  # 转转用
+adx.maplehaze.cn
+adapi.izuiyou.com  # 皮皮虾
+adstat.izuiyou.com  # 皮皮虾
+adcdn6.tencentmusic.com  # 未知，全民K歌抓出来的
+adlaunch.moji.com
+adapi.pandabus.cn
+appversion.115.com  # 115盘更新
+autoupdate.tantanapp.com  # 探探更新？
+adsdk.idmzj.com  # 动漫之家
+dsp-ad.yy.com
+splash.yy.com
+ad-sdk.lenovomm.com
+ad-trace.lenovomm.com  # 简书引用的联想的APP商店广告
+pic.fastapi.net  # 传奇私服网站
+ad-track.fliggy.com  # 飞猪的
+advert.mafengwo.cn  # 马蜂窝的
+apk-upgrade.qingteng-inc.com  # 青藤之恋更新？
+xladapi.izuiyou.com
+api-ad.kajicam.com
+api.ad.yipinread.com
+bohe.sfo-tx-shanghai-01.saas.sensorsdata.cn  # 薄荷健康
+snssdk.huazhu.com  # 华住会
+dynamicad.kfc.com.cn  # 肯德基
+ad-dp-drcn.cloud.huawei.com.cn
+ad.xiaotucc.com  # 小兔充充
+ad.mcloud.139.com  # 移动云盘
+adx.zuoyebang.com  # 作业帮、大学搜题酱
+# 修改版应用被劫持的垃圾弹窗，帝落、改的贴吧、笔趣阁完美版等弹窗
+arm.z74d.cn
+q.z74d.com
+mine.z74d.com
+twqwq.z74d.com
+syrs.z74d.com
+nztl.z74d.com
+sbkh5.z74d.com
+www.z74d.com
+m.z74d.com
+1.z74d.com
+ad.shunchangzhixing.com  # 两步路
+imageads.codoon.com  # 咕咚(运动)
+apk-upgrade.afunapp.com  # 会玩更新
+ad-dsp-1251779293.file.myqcloud.com  # 丰巢首页下面的轮播横幅广告
+ad-clientlog.cn-shanghai.log.aliyuncs.com  # 河马剧场
+ad-union.ssread.cn  # 河马剧场
+rapi.cmgadx.com  # 央视的广告
+ad-channel.diwodiwo.xyz
+ad-display.diwodiwo.xyz
+qadx.qinlinad.com  # 亲邻开门
+ad.aggrx.com  # 硬核聚视
+# U净，甚至可以考虑放行，广告不恶心，还是几条tips，禁用了反而难看。
+ads.zhinengxiyifang.cn
+adsoss.zhinengxiyifang.cn
+api.appcenter.ms  # 贴吧lite更新
+in.appcenter.ms  # 好像是一些APP的更新，据说还和隐私有关。
+codepush.appcenter.ms  # 隐私
+api-v3.mentamob.com
+iflyad.bjb.openstorage.cn
+mb.readke.com  # 网页锐客江湖-锐客网的所谓验证机器人实际广告弹窗跳转到快手。
+adsmartget.guangtuikeji.com
+adsmartgetbes.pinyuconn.cn
+ads.mykudou.com
+mores.motowoo.com  # 塔库信息
+adx.halomobi.com  # 嗨量科技
+bd-cdn.halomobi.com
+sdk.aqyad.com
+trace.aqyad.com
+volc.bj.ad.track.66mobi.com
+ads.mykudou.com
+fasthuyitool.jidiandian.cn
+huyitool.jidiandian.cn
+common.shuhonggz.com
+sdk.shuhonggz.com
+stat.shuhonggz.com
+stg.shuhonggz.com
+adshows.21cn.com  # 天翼云盘抓出来的，有他没他都不影响开屏、弹窗广告
+tk2.xfadx.com  # 安兔兔
+t.ag.b9ad.com  # 安兔兔
+ads.cxwlad.com  # 畅行未来
+v66-ad.ndcjl.com
