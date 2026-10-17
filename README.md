@@ -3,7 +3,7 @@
 Gravity‑Booster 是灵狐雪维护的个人自用的 Pi‑hole / hosts 广告拦截订阅（blocklist），针对 Android 应用与常见网站的广告与跟踪域名做了融合与清洗，便于在 Pi‑hole、AdGuard、路由器 hosts 等环境中订阅并使用。
 
 - 订阅（Raw）：https://raw.githubusercontent.com/lhuxue/Gravity-Booster/main/blocklist.txt
-- 当前收录：4949 条域名（清洗日期：2026-10-17）
+- 当前收录数量与清洗日期：详见黑名单列表
 - 参考 / 合并来源示例：SM‑Ad‑FuckU‑hosts 等公开 blocklist/hosts 项目
 - 许可证：MIT（见 LICENSE），与上游保持兼容，上游使用各自的许可证
 - 作者：灵狐雪（lhuxue）
